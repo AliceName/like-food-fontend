@@ -1,0 +1,82 @@
+
+
+.card{
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+
+    /* auto mobile */
+    width: 100%;
+    max-width: 280px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.card img{
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.card button {
+    border-radius: 5px;
+    width: 70px;
+    background-color: 	#90EE90;
+}
+
+.btn-buy{
+    font-size: 14px;
+    border: none;
+    box-shadow: 2px 4px;
+    font-family: sans-serif;
+}
+
+/* ---Phần slider cho ảnh---------- */
+.image-slider{
+    position: relative;
+    width: 100%;
+    height: 210px;
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
+}
+
+.card-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.btn-arrow{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    border: none;
+    font-size: 18px;
+    padding: 8px 12px;
+    cursor: pointer;
+    z-index: 10;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.btn-prev{
+    left: 0;
+}
+
+.btn-next{
+    right: 0;
+}
+
+.image-slider:hover .btn-arrow{
+    opacity: 1;
+}
+
+.btn-arrow:hover{
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* --------------------------------------- */

@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  likefood-frontend:
+    container_name: likefood-react-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      # Ánh xạ cổng: [Cổng máy chủ VPS] : [Cổng bên trong Container Nginx]
+      # Nghĩa là khi gõ IP của VPS lên trình duyệt, nó sẽ vào thẳng web của bạn
+      - "80:80"
