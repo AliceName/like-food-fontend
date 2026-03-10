@@ -38,6 +38,7 @@ function HomePage() {
                         {listProducts.map((food) => (
                             <Card
                                 key={food.id}
+                                id={food.id}
                                 linkAnh={food.anh}
                                 nameProduct={food.ten}
                                 price={food.gia}

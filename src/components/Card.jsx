@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./Card.css";
 function Card(props) {
     const images = Array.isArray(props.linkAnh) ? props.linkAnh : [props.linkAnh];
@@ -32,7 +33,9 @@ function Card(props) {
             </div>
 
             <div>
-                <h2>{props.nameProduct}</h2>
+                <Link to={`/product/${props.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                    <h2>{props.nameProduct}</h2>
+                </Link>
                 <p>{props.price}</p>
                 <button onClick={props.handleMua} className="btn-buy">Mua</button>
             </div>

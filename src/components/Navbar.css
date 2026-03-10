@@ -11,8 +11,14 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+
+
 .navbar {
-    background-color: rgb(143, 235, 112);
+    background-image: url('https://cdn.tgdd.vn/Files/2022/11/11/1486085/kham-pha-y-nghia-mau-xanh-la-cay-trong-cuoc-song-tinh-yeu-202211110618313706.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
     min-height: 100px;
     display: flex;
     justify-content: space-between;
@@ -32,7 +38,43 @@
     cursor: pointer;
 }
 
+/*(Giỏ hàng & Tài khoản) */
+.account{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
 
+.username{
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+    
+}
+
+.cart-icon{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.log-in{
+    padding: 8px 15px;
+    background-color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+
+.log-out{
+    padding: 8px 15px;
+    background-color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 .badge {
     background-color: red;
     color: white;

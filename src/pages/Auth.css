@@ -1,0 +1,124 @@
+.auth-page{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('https://cdn.tgdd.vn/Files/2022/11/11/1486085/kham-pha-y-nghia-mau-xanh-la-cay-trong-cuoc-song-tinh-yeu-202211110618313706.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.h2-auth{
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 15px;
+}
+
+.input-inf{
+    margin-right: 10px;
+    font-size: 18px;
+    border-radius: 2px;
+    text-align: left;
+    padding: 5px;
+    width: 350px;
+    margin: 3px;
+}
+.auth-container{
+    background-color: rgb(17, 111, 56);
+    text-align: center;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+}
+
+.btn-auth{
+    background-color: hsl(21, 63%, 70%);
+    align-items: center;
+    justify-content: start;
+    border-radius: 20px;
+    padding: 12px 20px ;
+    font-size: 16px;
+    margin: 5px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.3s ease;
+}
+
+.btn-auth-google{
+    background-color: hsl(21, 63%, 70%);
+    font-size: 16px;
+    width: 100%;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 15px;
+}
+
+.btn-auth-google:hover {
+    background-color: #f57c00; /* Đổi màu đậm hơn khi rê chuột vào */
+}
+.btn-auth:hover {
+    background-color: #f57c00; /* Đổi màu đậm hơn khi rê chuột vào */
+}
+
+.auth-link{
+    color: #0a2b1e;
+    box-shadow: rgba(0, 0, 0, 0.1);
+}
+.auth-link:hover{
+    color: #ff9800; /* Rê chuột vào thì đổi sang màu cam cho tông xuyệt tông */
+    text-decoration: underline;
+}
+
+.text-forgot-password{
+    margin-top: 8px;
+    width: '100%';
+    text-align: left;
+}
+
+/* Mobile */
+@media (max-width:480px){
+
+    .auth-container{
+        padding: 25px;
+        width: 90%;
+    }
+
+    .input-inf{
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .h2-auth{
+        font-size: 20px;
+    }
+
+    .btn-auth{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* tablet */
+@media (max-width:768px){
+
+    .auth-container{
+        padding: 35px;
+        width: 80%;
+    }
+
+    .input-inf{
+        width: 100%;
+        font-size: 17px;
+    }
+
+    /* .btn-auth{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    } */
+}

@@ -22,13 +22,13 @@
 .card button {
     border-radius: 5px;
     width: 70px;
-    background-color: 	#90EE90;
+    background-color: 	#90eebf;
 }
 
 .btn-buy{
     font-size: 14px;
     border: none;
-    box-shadow: 2px 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     font-family: sans-serif;
 }
 
