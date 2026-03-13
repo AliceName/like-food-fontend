@@ -30,17 +30,21 @@ function Navbar(props) {
     return (
         <nav className="navbar">
             {/* 1.Logo cửa hàng*/}
-            <div className="logo"><img src={logoImg} alt="logo" className="logo-img" /></div>
+            <div className="logo">
+                <Link to="/"><img src={logoImg} alt="logo" className="logo-img" /></Link>
+            </div>
             {/* 2.Menu điều hướng*/}
             <ul className={openMenu ? "nav-links active" : "nav-links"}>
-                <li>Trang chủ</li>
+                <li><Link to="/">Trang chủ</Link></li>
                 <li>Sản phẩm</li>
                 <li>Liên hệ</li>
             </ul>
             {/* 3. Giỏ hàng (Nhận số lượng từ App truyền vào) */}
             <div className="cart-icon">
-                <span>Giỏ hàng: </span>
-                <span className="badge">{props.quantity}</span>
+                <Link to="/cart">
+                    <span>Giỏ hàng: </span>
+                    <span className="badge">{props.quantity}</span>
+                </Link>
 
                 {user ? (
                     <div className="account">

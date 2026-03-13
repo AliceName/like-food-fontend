@@ -7,7 +7,7 @@ import UserLayout from './layouts/UserLayout'
 import Register from './pages/Register'
 import ForgotPassword from './pages/ForgotPassword'
 import ProductDetail from './pages/user/ProductDetail'
-
+import Cart from './pages/user/Cart';
 
 function App() {
   return (
@@ -17,6 +17,7 @@ function App() {
         <Route path='/' element={<UserLayout />}>
           <Route index element={<HomePage />} />
           <Route path="product/:id" element={<ProductDetail />} />
+          <Route path="/cart" element={<Cart />} />
         </Route>
 
         {/* Trang login */}

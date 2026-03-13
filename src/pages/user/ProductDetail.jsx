@@ -96,9 +96,12 @@ const ProductDetail = () => {
                             🛒 Thêm vào giỏ hàng
                         </button>
 
-                        <button className="btn-buy-now" onClick={() => {
-                            handleBuy(product); // Thêm vào giỏ
-                            navigate('/cart');  // Và lập tức chuyển sang trang Giỏ hàng
+                        {/* Nút Mua ngay: Chờ handleBuy kiểm tra, nếu trả về true (đã đăng nhập) thì mới chuyển trang */}
+                        <button className="btn-buy-now" onClick={async () => {
+                            const isSuccess = await handleBuy(product); // Đợi kết quả kiểm tra
+                            if (isSuccess) {
+                                navigate('/cart'); // Chỉ nhảy sang giỏ hàng nếu kiểm tra thành công
+                            }
                         }}>
                             Mua ngay
                         </button>

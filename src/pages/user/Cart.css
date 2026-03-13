@@ -1,0 +1,280 @@
+
+/* Khung chứa toàn bộ trang giỏ hàng */
+.cart-container{
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.cart-title{
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.cart-content{
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+/* --- PHẦN DANH SÁCH MÓN ĂN --- */
+.cart-items-section{
+    flex: 2;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    padding: 20px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+    gap: 20px;
+}
+
+.cart-item:last-child{
+    border-bottom: none;
+}
+
+.cart-item-img{
+    height: 80px;
+    width: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.cart-item-info{
+    flex: 2;
+}
+
+.cart-item-name{
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.cart-item-name:hover{
+    color: #ff9800;
+}
+
+.cart-item-price{
+    color: #666;
+    font-size: 14px;
+}
+
+/* Cụm tăng giảm số lượng */
+.cart-item-quantity{
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.cart-item-quantity button{
+    background: #f9f9f9;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.cart-item-quantity button:hover{
+    background: #e0e0e0;
+}
+
+.cart-item-quantity span{
+    padding: 0 15px;
+    font-weight: bold;
+}
+
+/* Thành tiền và Thùng rác */
+.cart-item-subtotal{
+    flex: 1;
+    text-align: right;
+    font-weight: bold;
+    color: #0ca960;
+    font-size: 16px;
+}
+
+.btn-remove-item{
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: 0.2s;
+}
+
+.btn-remove-item:hover{
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* --- PHẦN BẢNG TÍNH TIỀN (BÊN PHẢI) --- */
+.cart-sumary-section{
+    flex: 1;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding: 25px;
+    position: sticky;
+    top: 20px;
+}
+.summary-row{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.sumary-total{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px dashed #eee;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.total-price {
+    color: #ee4d2d;
+    font-size: 24px;
+}
+
+.btn-checkout {
+    width: 100%;
+    padding: 15px;
+    background-color: #ee4d2d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-checkout:hover {
+    background-color: #d73d1f;
+}
+
+.btn-back-home {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: #666;
+    text-decoration: none;
+    font-size: 14px;
+}
+.btn-back-home:hover {
+    color: #333;
+    text-decoration: underline;
+}
+
+/* --- KHI GIỎ HÀNG TRỐNG --- */
+.cart-empty-container {
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.cart-empty-container h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.cart-empty-container p {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.btn-continue-shopping {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #ff9800;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-continue-shopping:hover {
+    background-color: #e68a00;
+}
+
+/* --- Responsive cho iPad / Tablet (từ 769px đến 1024px) --- */
+@media (max-width: 1024px) {
+    .cart-container {
+        padding: 0 15px; /* Thu nhỏ lề 2 bên một chút cho iPad */
+    }
+
+    .cart-content {
+        flex-direction: column; /* Chuyển từ xếp ngang sang xếp dọc */
+        gap: 20px;
+    }
+
+    .cart-items-section{
+        width: 100%;
+    }
+
+    .cart-sumary-section {
+        width: 100%;
+        max-width: 400px;  /* Thu gọn chiều rộng của bảng tính tiền lại */
+        margin-left: auto; /* Lực đẩy toàn bộ khối này dính sát vào mép phải */
+        position: static;  /* Tắt chế độ trượt theo màn hình */
+    }
+
+    .btn-checkout {
+        width: 100%;
+        margin-top: 20px;
+    }
+}
+
+/* --- Responsive cho điện thoại Mobile (giữ nguyên của bạn và bổ sung chút xíu) --- */
+@media (max-width: 768px) {
+    .cart-content {
+        flex-direction: column;
+    }
+    .cart-sumary-section {
+        position: static;
+    }
+    .cart-item {
+        flex-wrap: wrap; /* Cho phép rớt dòng khi màn hình quá nhỏ */
+        position: relative;
+    }
+    .cart-item-info {
+        flex: 1;
+        min-width: 150px;
+    }
+    .cart-item-subtotal {
+        text-align: left;
+        width: 100%;
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px dashed #eee; 
+    }
+    .btn-remove-item {
+        top: 15px;
+        right: 0;
+    }
+
+    /* Ép khối chứa 2 nút sang bên phải */
+    .cart-summary-section {
+        width: 100%;
+        max-width: 100%; 
+        margin-left: 0;
+        position: static;
+    }
+}
