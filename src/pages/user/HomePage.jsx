@@ -42,7 +42,7 @@ function HomePage() {
                                 linkAnh={food.anh}
                                 nameProduct={food.ten}
                                 price={food.gia}
-                                handleMua={handleBuy}
+                                handleMua={() => handleBuy(food)}
                             />
                         ))}
                     </div>

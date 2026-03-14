@@ -32,12 +32,12 @@ function Card(props) {
                 )}
             </div>
 
-            <div>
+            <div className="card-info">
                 <Link to={`/product/${props.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                     <h2>{props.nameProduct}</h2>
                 </Link>
                 <p>{props.price}</p>
-                <button onClick={props.handleMua} className="btn-buy">Mua</button>
+                <button onClick={props.handleMua} className="btn-buy">Mua ngay</button>
             </div>
         </div>
     );

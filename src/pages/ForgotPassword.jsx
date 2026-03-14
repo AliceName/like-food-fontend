@@ -9,7 +9,7 @@ const ForgotPassword = () => {
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState('');
 
-    const hanleResetPassword = async (e) => {
+    const handleResetPassword = async (e) => {
         e.preventDefault();
         setLoading(true);
         setMessage('');
@@ -17,7 +17,7 @@ const ForgotPassword = () => {
         try {
             // Yêu cầu sp gửi email
             const { error } = await supabase.auth.resetPasswordForEmail(email, {
-                redirectTo: 'http://localhost:5173/reset-password',
+                redirectTo: 'http://localhost:5173/update-password',
             });
 
             if (error) throw error;
@@ -33,7 +33,7 @@ const ForgotPassword = () => {
         <div className="auth-page">
             <div className="auth-container">
                 <h2 className="h2-auth">KHÔI PHỤC MẬT KHẨU</h2>
-                <form onSubmit={hanleResetPassword}>
+                <form onSubmit={handleResetPassword}>
                     <input type="email"
                         placeholder="Email"
                         value={email} onChange={(e) => setEmail(e.target.value)}

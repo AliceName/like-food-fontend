@@ -58,6 +58,10 @@
     align-items: center;
 }
 
+.cart-icon-link{
+    text-decoration: none;
+    color: aliceblue;
+}
 .log-in{
     padding: 8px 15px;
     background-color: white;
@@ -86,6 +90,12 @@
 .menu-icon{
     display: none;
 }
+
+.link-main-page{
+    text-decoration: none;
+    color: aliceblue;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 /* mobile */
 @media(max-width:768px) {
     .navbar {
@@ -95,6 +105,10 @@
 
     .menu-icon{
         display: block;
+        font-size: 24px;
+        margin-right: 15px;
+        margin-left: 15px;
+        color: white;
     }
 
     .cart-icon{
@@ -112,14 +126,27 @@
         padding: 20px 0;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         display: none;
+            /* đè lên sp */
+        z-index: 999;
     }
     .nav-links.active{
         display: flex;
     }
 
+    .link-main-page{
+        text-decoration: none;
+        color: #333;
+        font-size: 18px;
+        border: none;
+        font-weight: 500;
+    }
     .nav-links li{
-        padding: 10px 0;
+        padding: 15px 0;
         width: 100%;
         text-align: center;
+    }
+
+    .nav-links li:hover {
+        background-color: #f3e5b5; 
     }
 }

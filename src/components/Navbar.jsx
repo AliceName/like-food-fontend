@@ -35,13 +35,13 @@ function Navbar(props) {
             </div>
             {/* 2.Menu điều hướng*/}
             <ul className={openMenu ? "nav-links active" : "nav-links"}>
-                <li><Link to="/">Trang chủ</Link></li>
-                <li>Sản phẩm</li>
-                <li>Liên hệ</li>
+                <li onClick={() => setOpenMenu(false)}><Link to="/" className="link-main-page">Trang chủ</Link></li>
+                <li onClick={() => setOpenMenu(false)}>Sản phẩm</li>
+                <li onClick={() => setOpenMenu(false)}>Liên hệ</li>
             </ul>
             {/* 3. Giỏ hàng (Nhận số lượng từ App truyền vào) */}
             <div className="cart-icon">
-                <Link to="/cart">
+                <Link to="/cart" className="cart-icon-link">
                     <span>Giỏ hàng: </span>
                     <span className="badge">{props.quantity}</span>
                 </Link>

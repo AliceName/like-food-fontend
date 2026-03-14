@@ -8,6 +8,7 @@ import Register from './pages/Register'
 import ForgotPassword from './pages/ForgotPassword'
 import ProductDetail from './pages/user/ProductDetail'
 import Cart from './pages/user/Cart';
+import UpdatePassword from './pages/UpdatePassword';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/update-password" element={<UpdatePassword />} />
       </Routes>
     </BrowserRouter>
   )

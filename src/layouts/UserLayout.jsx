@@ -18,6 +18,21 @@ const UserLayout = () => {
             }
         };
         fetchUserAndCart();
+
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+            if (event === 'SIGNED_OUT') {
+                // KHI ĐĂNG XUẤT: Tẩy trắng giỏ hàng và xóa thông tin User hiện tại
+                setCartItems([]);
+                setCurrentUser(null);
+            } else if (event === 'SIGNED_IN') {
+                // KHI ĐĂNG NHẬP (nếu lỡ chưa load kịp ở bước 1): Gắn user vào và lấy giỏ hàng
+                setCurrentUser(session.user);
+                loadCartFromDB(session.user.id);
+            }
+        });
+
+        // Hủy lắng nghe khi Component bị gỡ bỏ để tránh tràn bộ nhớ
+        return () => subscription.unsubscribe();
     }, []);
 
     // Hàm lấy giỏ hàng

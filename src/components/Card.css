@@ -11,6 +11,10 @@
     width: 100%;
     max-width: 280px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .card img{
@@ -19,18 +23,31 @@
     border-radius: 4px;
 }
 
-.card button {
-    border-radius: 5px;
-    width: 70px;
-    background-color: 	#90eebf;
+.card-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Quan trọng: Ép khối này giãn hết chiều cao của thẻ Card */
 }
 
 .btn-buy{
-    font-size: 14px;
+    width: 100%;
+    padding: 15px;
+    background-color: #90eebf; 
+    color: #333; 
     border: none;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    font-family: sans-serif;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: auto; 
+    cursor: pointer;
+    transition: 0.3s;
 }
+
+.btn-buy:hover{
+    background-color: #45b07a; 
+    color: aliceblue;
+}
+
 
 /* ---Phần slider cho ảnh---------- */
 .image-slider{
