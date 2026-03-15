@@ -86,9 +86,9 @@ const Login = () => {
                         </button>
                     </div>
 
-                    <div style={{ textAlign: 'center', marginTop: '20px', borderTop: '1px solid #ddd', paddingTop: '15px' }}>
+                    <div >
                         <span>Bạn chưa có tài khoản? </span>
-                        <Link to="/register" className="auth-link" style={{ fontWeight: 'bold', color: '#ee4d2d' }}>
+                        <Link to="/register" className="auth-link" >
                             Đăng ký ngay
                         </Link>
                     </div>

@@ -1,14 +1,23 @@
 import React from 'react'
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import HomePage from './pages/user/HomePage'
+
 import Login from './pages/Login'
-import UserLayout from './layouts/UserLayout'
 import Register from './pages/Register'
 import ForgotPassword from './pages/ForgotPassword'
+
+//  CÁC LAYOUT
+import UserLayout from './layouts/UserLayout'
+import AdminLayout from './layouts/AdminLayout'
+
+// USER
+import HomePage from './pages/user/HomePage'
 import ProductDetail from './pages/user/ProductDetail'
 import Cart from './pages/user/Cart';
 import UpdatePassword from './pages/UpdatePassword';
+
+// ADMIN
+import AdminDashboard from './pages/admin/AdminDashboard'
 
 function App() {
   return (
@@ -21,6 +30,10 @@ function App() {
           <Route path="/cart" element={<Cart />} />
         </Route>
 
+        {/* Nhóm các page admin */}
+        <Route path='/admin' element={<AdminLayout />}>
+          <Route index element={<AdminDashboard />} />
+        </Route>
         {/* Trang login */}
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />

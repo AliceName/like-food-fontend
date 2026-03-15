@@ -1,0 +1,128 @@
+/* --- Khung bao bọc toàn bộ trang --- */
+.admin-container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Đổ bóng mềm mại cho khối */
+}
+
+/* --- Phần Tiêu đề và Nút thêm --- */
+.manage-product {
+    display: flex;
+    justify-content: space-between; /* Đẩy chữ sang trái, nút sang phải */
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f1f2f6; /* Đường gạch chân nhẹ */
+}
+
+.label-manage {
+    margin: 0;
+    font-size: 24px;
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+.btn-add-product {
+    background-color: #0ca960; /* Xanh lá nhận diện thương hiệu */
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(12, 169, 96, 0.2);
+}
+
+.btn-add-product:hover {
+    background-color: #0a874c;
+    transform: translateY(-1px); /* Hiệu ứng nảy nhẹ khi trỏ chuột */
+}
+
+/* --- Khung chứa Bảng --- */
+.admin-manage-product {
+    overflow-x: auto; /* Bật thanh cuộn ngang nếu màn hình quá nhỏ */
+}
+
+/* --- Bảng dữ liệu --- */
+.admin-manage-table {
+    width: 100%;
+    border-collapse: collapse; /* Xóa khoảng trống giữa các ô */
+    text-align: left;
+    font-size: 15px;
+}
+
+/* Cột tiêu đề bảng */
+.product-table-thead th {
+    background-color: #f8f9fa;
+    color: #495057;
+    padding: 15px;
+    font-weight: 600;
+    border-bottom: 2px solid #dee2e6;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+}
+
+/* Các ô dữ liệu */
+.admin-manage-table td {
+    padding: 15px;
+    vertical-align: middle;
+    border-bottom: 1px solid #f1f2f6;
+    color: #333;
+}
+
+/* Hiệu ứng hover cho từng dòng */
+.admin-manage-table tbody tr:hover {
+    background-color: #fcfcfc;
+}
+
+/* Căn chỉnh hình ảnh sản phẩm */
+.admin-manage-table img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover; /* Cắt ảnh vuông vức không bị méo */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Tô đậm cột Giá tiền */
+.admin-manage-table td:nth-child(4) {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+/* --- Các nút Hành động (Sửa/Xóa) --- */
+.admin-manage-table button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-sua {
+    background-color: #e3f2fd;
+    color: #1976d2; /* Chữ xanh biển trên nền xanh nhạt */
+    margin-right: 10px;
+}
+
+.btn-sua:hover {
+    background-color: #1976d2;
+    color: white;
+}
+
+/* Vì nút xóa của bạn không có class, mình dùng selector :last-child */
+.admin-manage-table td button:last-child {
+    background-color: #ffebee;
+    color: #d32f2f; /* Chữ đỏ trên nền đỏ nhạt */
+}
+
+.admin-manage-table td button:last-child:hover {
+    background-color: #d32f2f;
+    color: white;
+}

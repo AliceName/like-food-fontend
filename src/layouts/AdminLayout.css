@@ -1,0 +1,119 @@
+/* Reset cơ bản cho toàn trang Admin */
+.admin-wrapper {
+    display: flex;
+    height: 100vh; /* Cao bằng đúng 100% màn hình */
+    background-color: #f4f6f9; /* Màu xám nhạt cho đỡ mỏi mắt */
+    font-family: Arial, sans-serif;
+    overflow: hidden; /* Chặn cuộn toàn trang, chỉ cuộn phần nội dung */
+}
+
+/* --- CỘT MENU BÊN TRÁI (SIDEBAR) --- */
+.admin-sidebar {
+    width: 260px;
+    background-color: #2c3e50; /* Màu xanh đen trầm, sang trọng */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.admin-brand {
+    padding: 20px;
+    text-align: center;
+    background-color: #1a252f;
+    border-bottom: 1px solid #34495e;
+}
+
+.admin-brand h2 {
+    margin: 0;
+    font-size: 20px;
+    color: #ecf0f1;
+}
+
+.admin-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1; /* Đẩy khối Footer xuống dưới cùng */
+}
+
+.admin-link {
+    display: block;
+    padding: 18px 25px;
+    color: #bdc3c7;
+    text-decoration: none;
+    font-size: 16px;
+    border-bottom: 1px solid #34495e;
+    transition: all 0.3s;
+}
+
+.admin-link:hover {
+    background-color: #0ca960; /* Đổi màu xanh lá khi di chuột vào */
+    color: white;
+    padding-left: 35px; /* Hiệu ứng chữ thụt lề trông rất pro */
+}
+
+.admin-footer {
+    padding: 20px;
+}
+
+.btn-admin-logout {
+    width: 100%;
+    padding: 12px;
+    background-color: #e74c3c; /* Nút đỏ cảnh báo */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-admin-logout:hover {
+    background-color: #c0392b;
+}
+
+/* --- CỘT NỘI DUNG BÊN PHẢI --- */
+.admin-main {
+    flex: 1; /* Tự động dãn chiếm hết không gian còn lại */
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-header {
+    height: 70px;
+    background-color: white;
+    padding: 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.admin-header h3 {
+    margin: 0;
+    color: #333;
+}
+
+.btn-back-shop {
+    padding: 8px 15px;
+    background-color: #f1f2f6;
+    color: #2f3542;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.btn-back-shop:hover {
+    background-color: #dfe4ea;
+}
+
+.admin-content {
+    padding: 30px;
+    overflow-y: auto; /* Nếu bảng danh sách món ăn quá dài thì phần này sẽ có thanh cuộn riêng */
+    flex: 1;
+}

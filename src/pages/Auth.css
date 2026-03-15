@@ -65,7 +65,8 @@
 }
 
 .auth-link{
-    color: #0a2b1e;
+    text-decoration: none;
+    color: #bbcbc4;
     box-shadow: rgba(0, 0, 0, 0.1);
 }
 .auth-link:hover{
