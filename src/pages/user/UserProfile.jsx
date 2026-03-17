@@ -1,5 +1,5 @@
 //import
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { supabase } from "../../supabaseClient"
 import "./UserProfile.css";
 import { useNavigate } from "react-router-dom";
@@ -43,9 +43,6 @@ const UserProfile = () => {
             setLoading(false);
         }
     };
-    useEffect(() => {
-        fetchUserData();
-    }, [navigate]);
     // 2. Hàm thêm địa chỉ mới
     // Nếu đây là địa chỉ đầu tiên, tự động cho nó làm mặc định
     const handleAddAddress = async (e) => {
