@@ -47,9 +47,14 @@
 
 .username{
     font-size: 14px;
-    color: #333;
+    color: #fcf9f9;
     font-weight: bold;
-    
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-img{
+    height: 32px;
+    width: auto;
 }
 
 .cart-icon{

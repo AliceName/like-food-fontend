@@ -1,0 +1,173 @@
+.profile-page {
+    padding: 40px 20px;
+    background-color: #f5f5f5;
+    min-height: calc(100vh - 100px);
+}
+
+.profile-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+
+/* Header tài khoản */
+.profile-header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.avatar-placeholder {
+    width: 80px;
+    height: 80px;
+    background-color: #0ca960;
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 0 auto 15px auto;
+}
+
+.profile-header h2 { margin: 0 0 5px 0; font-size: 22px; }
+.profile-header p { margin: 0; opacity: 0.8; }
+
+/* Sổ địa chỉ */
+.address-book-section {
+    padding: 30px;
+}
+
+.address-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.address-header h3 { margin: 0; color: #333; }
+
+.btn-add-address {
+    background-color: #ee4d2d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-add-address:hover { background-color: #d73a1e; }
+
+/* Form nhập liệu */
+.address-form {
+    background-color: #fafafa;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px dashed #ccc;
+    margin-bottom: 25px;
+}
+
+.address-form h4 { margin-top: 0; color: #555; }
+
+.form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.address-form input, .address-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    font-family: inherit;
+}
+
+.address-form textarea { resize: vertical; min-height: 80px; margin-bottom: 15px; }
+
+.btn-save-address {
+    background-color: #0ca960;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Danh sách thẻ địa chỉ */
+.empty-address { text-align: center; color: #888; font-style: italic; padding: 20px; }
+
+.address-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.address-card.is-default {
+    background-color: #fcfaef; /* Nền vàng nhạt cho địa chỉ mặc định */
+    padding: 20px;
+    border-radius: 8px;
+    border-bottom: none;
+    margin-bottom: 10px;
+}
+
+.address-name-phone {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.address-name-phone strong { font-size: 18px; color: #333; }
+.divider { margin: 0 10px; color: #ccc; }
+.address-name-phone span { color: #555; }
+
+.badge-default {
+    border: 1px solid #ee4d2d;
+    color: #ee4d2d;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-left: 15px;
+}
+
+.address-detail { color: #666; font-size: 15px; line-height: 1.5; }
+
+/* Nút thao tác */
+.address-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-set-default, .btn-delete-address {
+    padding: 8px 12px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.btn-set-default { color: #333; }
+.btn-set-default:hover { border-color: #333; }
+
+.btn-delete-address { color: #e74c3c; border-color: #f5c6cb; }
+.btn-delete-address:hover { background-color: #e74c3c; color: white; }
+
+@media (max-width: 768px) {
+    .address-card { flex-direction: column; align-items: flex-start; gap: 15px; }
+    .address-actions { width: 100%; justify-content: flex-end; }
+    .form-row { flex-direction: column; }
+}

@@ -15,6 +15,7 @@ import HomePage from './pages/user/HomePage'
 import ProductDetail from './pages/user/ProductDetail'
 import Cart from './pages/user/Cart';
 import UpdatePassword from './pages/UpdatePassword';
+import Profile from './pages/user/UserProfile'
 
 // ADMIN
 import AdminDashboard from './pages/admin/AdminDashboard'
@@ -28,6 +29,7 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="product/:id" element={<ProductDetail />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/profile" element={<Profile />} />
         </Route>
 
         {/* Nhóm các page admin */}

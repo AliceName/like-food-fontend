@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { supabase } from '../supabaseClient'
 
 import logoImg from "../assets/img/logo-lf.png";
+import userImg from "../assets/img/user.png";
 
 function Navbar(props) {
     const [openMenu, setOpenMenu] = useState(false);
@@ -49,7 +50,7 @@ function Navbar(props) {
                 {user ? (
                     <div className="account">
                         <span className="username">
-                            {user.email.split('@')[0]}
+                            <Link to='/profile' className="profile-user"><img src={userImg} alt="account" className="user-img" /></Link>
                         </span>
                         <button onClick={handleLogout} className="log-out"> Dang xuat</button>
                     </div>
