@@ -4,6 +4,12 @@
     min-height: calc(100vh - 100px);
 }
 
+/* loading */
+.load-data{
+    font-size: 16px;
+    align-items: center;
+    /* trang trí thêm nếu muốn */
+}
 .profile-container {
     max-width: 900px;
     margin: 0 auto;

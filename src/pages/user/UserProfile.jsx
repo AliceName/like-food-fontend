@@ -117,7 +117,7 @@ const UserProfile = () => {
         }
     }
 
-    if (loading) return <div>Đang tải dữ liệu...</div>;
+    if (loading) return <div className="load-data">Đang tải dữ liệu...</div>;
     return (
         <div className="profile-page">
             <div className="profile-container">

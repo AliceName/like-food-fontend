@@ -146,7 +146,28 @@
     font-size: 18px;
     font-weight: bold;
 }
+.cart-summary-total {
+    display: flex;
+    justify-content: flex-end; /* Đẩy tất cả sát về bên phải */
+    align-items: center;       /* Căn giữa theo chiều dọc */
+    gap: 15px;                 /* Khoảng cách giữa chữ và số tiền */
+    padding: 20px 0;
+    margin-top: 15px;
+    border-top: 2px dashed #eee; /* Đường gạch đứt phân cách với phần trên */
+}
 
+.summary-total-label {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+}
+
+.summary-total-price {
+    font-size: 26px; /* Chữ to chà bá để khách dễ nhìn */
+    font-weight: bold;
+    color: #ee4d2d;  /* Màu đỏ cam đặc trưng của các sàn TMĐT */
+}
 .total-price {
     color: #ee4d2d;
     font-size: 24px;
@@ -181,6 +202,28 @@
 .btn-back-home:hover {
     color: #333;
     text-decoration: underline;
+}
+/* Tick chọn*/
+.cart-checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: #0ca960; /* Đổi màu dấu tick thành màu xanh thương hiệu */
+}
+
+.item-checkbox {
+    display: flex;
+    align-items: center;
+    padding-right: 15px;
+}
+
+.select-all-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
 }
 
 /* --- KHI GIỎ HÀNG TRỐNG --- */
