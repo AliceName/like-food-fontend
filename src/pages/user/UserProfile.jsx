@@ -1,8 +1,10 @@
 //import
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { supabase } from "../../supabaseClient"
 import "./UserProfile.css";
 import { useNavigate } from "react-router-dom";
+import LocationPicker from '../../components/LocationPicker';
+
 
 const UserProfile = () => {
     const [user, setUser] = useState(null);
@@ -20,6 +22,7 @@ const UserProfile = () => {
     const navigate = useNavigate();
 
     // 1. Lấy thông tin User và Danh sách địa chỉ
+
     const fetchUserData = async () => {
         try {
             const { data: { session } } = await supabase.auth.getSession();
@@ -43,6 +46,11 @@ const UserProfile = () => {
             setLoading(false);
         }
     };
+
+    useEffect(() => {
+
+        fetchUserData();
+    }, [navigate]);
     // 2. Hàm thêm địa chỉ mới
     // Nếu đây là địa chỉ đầu tiên, tự động cho nó làm mặc định
     const handleAddAddress = async (e) => {
@@ -75,12 +83,12 @@ const UserProfile = () => {
             // Bước A: Gỡ mặc định của tất cả địa chỉ cũ
             await supabase
                 .from('user_addresses')
-                .update({ is_default: true })
+                .update({ is_default: false })
                 .eq('user_id', user.id);
             // Bước B: Cài mặc định cho địa chỉ được chọn
             const { error } = await supabase
                 .from('user_addresses')
-                .update({ is_default: false })
+                .update({ is_default: true })
                 .eq('id', addressId);
 
             if (error) throw error;
@@ -146,12 +154,21 @@ const UserProfile = () => {
                                     onChange={e => setNewAddress({ ...newAddress, phone_number: e.target.value })}
                                     required />
                             </div>
+                            <LocationPicker onLocationSelect={(addressText) => {
+                                // Tự động điền text lấy từ bản đồ vào ô Địa chỉ cụ thể
+                                setNewAddress({ ...newAddress, detailed_address: addressText });
+                            }} />
                             <textarea
-                                placeholder="Địa chỉ cụ thể( số nhà, tên đường,.."
+                                placeholder="Địa chỉ cụ thể( số nhà, tên đường,..)"
                                 value={newAddress.detailed_address}
                                 onChange={e => setNewAddress({ ...newAddress, detailed_address: e.target.value })}
                                 required
+                                rows="3"
                             />
+
+                            <button type="submit" className="btn-save-address">
+                                Lưu Địa Chỉ
+                            </button>
                         </form>
                     )}
 
@@ -177,7 +194,7 @@ const UserProfile = () => {
                                                 className="btn-set-default"
                                                 onClick={() => handleSetDefault(addr.id)}
                                             >
-                                                Thiết lập mặc định
+                                                Địa chỉ mặc định
                                             </button>
                                         )}
                                         <button

@@ -1,0 +1,77 @@
+/* Khung bao bọc toàn bộ khu vực chọn vị trí */
+.location-picker-container {
+    width: 100%;
+    margin-bottom: 25px;
+    background-color: #fff;
+    border: 1px dashed #ccc;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+/* Phần Tiêu đề và Nút "Vị trí của tôi" nằm ngang nhau */
+.location-picker-container > div:first-child {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.location-picker-container p {
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+    font-size: 15px;
+}
+
+/* Nút Lấy định vị GPS */
+.location-picker-container button:first-of-type {
+    padding: 8px 15px;
+    background-color: #e3f2fd;
+    color: #1976d2;
+    border: 1px solid #90caf9;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 13px;
+    transition: all 0.3s;
+}
+
+.location-picker-container button:first-of-type:hover:not(:disabled) {
+    background-color: #1976d2;
+    color: white;
+}
+
+/* Ép chiều cao cho Bản đồ (RẤT QUAN TRỌNG) */
+.map-view-area {
+    height: 300px; /* Bắt buộc phải có để bản đồ hiện ra */
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    z-index: 0; /* Để bản đồ không đè lên thanh Navbar phía trên */
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+/* Nút Xác nhận địa chỉ */
+.location-picker-container > button:last-child {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: #0ca960; /* Màu xanh thương hiệu */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 15px;
+    transition: background-color 0.3s;
+}
+
+.location-picker-container > button:last-child:hover:not(:disabled) {
+    background-color: #0a874c;
+}
+
+/* Trạng thái Disable (Khi đang load) của các nút */
+.location-picker-container button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
