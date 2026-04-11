@@ -2,8 +2,9 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "../../supabaseClient"
 import "./UserProfile.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import LocationPicker from '../../components/LocationPicker';
+import historyImg from '../../assets/img/history.png'
 
 
 const UserProfile = () => {
@@ -127,6 +128,12 @@ const UserProfile = () => {
                     </div>
                     <h2>Tài khoản của tôi</h2>
                     <p>{user?.email}</p>
+                </div>
+                <div className="manage-container">
+                    {/* THÊM NÚT  CHUYỂN HƯỚNG SANG LỊCH SỬ ĐƠN HÀNG Ở ĐÂY */}
+                    <Link to="/userOrder" className="btn-go-to-orders">
+                        <img src={historyImg} alt="history-icon" />
+                    </Link>
                 </div>
                 {/* Khu vực quản lý sổ địa chỉ */}
                 <div className="address-book-section">

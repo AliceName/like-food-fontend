@@ -86,7 +86,9 @@
     gap: 15px;
     margin-top: 30px;
 }
-
+.link-add-cart{
+    text-decoration: none;
+}
 .btn-add-cart, .btn-buy-now {
     flex: 1; /* 2 nút to bằng nhau */
     padding: 15px;
@@ -132,15 +134,189 @@
     }
 }
 
-/* Phần related */
+/* --- PHẦN GỢI Ý MÓN ĂN (RELATED PRODUCTS) --- */
+/* ======================================================= */
+/* --- ÉP BẰNG CHIỀU CAO CHO PHẦN CÓ THỂ BẠN CŨNG THÍCH --- */
+/* ======================================================= */
 
-.related-products-container{
-    max-width: 1000px;
-    margin: 40px auto;
-    padding: 0 20px;
-}
-
-.related-list{
+.related-list {
     display: flex;
     gap: 20px;
+    align-items: stretch !important; /* Bắt buộc các thẻ phải kéo chân cho bằng thẻ cao nhất */
+    overflow-x: auto;
+    padding-bottom: 15px;
+}
+
+/* Tác động trực tiếp vào cái thẻ Card nằm trong list này */
+.related-list .card {
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important; /* Để flex tự do kéo giãn chiều cao */
+    flex: 1;
+    min-width: 200px;
+}
+
+/* Phần chứa chữ của thẻ */
+.related-list .card-info {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 !important; /* Lệnh siêu quan trọng: Bắt phần chữ phải giãn ra lấp đầy khoảng trống */
+}
+
+/* Đẩy nút Mua ngay xuống sát mặt đáy */
+.related-list .btn-buy {
+    margin-top: auto !important; /* Lò xo nén đẩy nút xuống dưới cùng */
+    width: 100%;
+}
+
+
+/* ========================================= */
+/* --- CSS CHO POPUP MUA NHANH KIỂU CARD --- */
+/* ========================================= */
+
+.quick-buy-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    backdrop-filter: blur(4px); /* Làm mờ nền phía sau */
+}
+
+/* Biến Popup thành cái Thẻ (Card) */
+.quick-buy-modal.card-style {
+    background: white;
+    width: 90%;
+    max-width: 350px; 
+    border-radius: 20px; 
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+    position: relative;
+    overflow: hidden; 
+    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Nút tắt Popup (X) */
+.btn-close-quick-buy {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: bold;
+    color: #333;
+    transition: 0.2s;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.btn-close-quick-buy:hover {
+    background: #ee4d2d;
+    color: white;
+}
+
+/* Ảnh Cover tràn viền trên */
+.quick-buy-cover {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.quick-buy-content {
+    padding: 20px;
+}
+
+.quick-buy-title {
+    margin: 0 0 5px 0;
+    font-size: 20px;
+    color: #333;
+    font-weight: bold;
+}
+
+.quick-buy-price {
+    margin: 0 0 20px 0;
+    font-weight: bold;
+    color: #ee4d2d;
+    font-size: 18px;
+}
+
+/* Khu vực chọn số lượng */
+.quick-buy-qty-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    background: #f8f9fa;
+    padding: 12px 15px;
+    border-radius: 12px;
+}
+
+.qty-label {
+    font-weight: 500;
+    color: #555;
+}
+
+.quick-buy-qty-controls {
+    display: flex;
+    align-items: center;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.quick-buy-qty-controls button {
+    width: 35px;
+    height: 35px;
+    background: white;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.2s;
+    color: #333;
+}
+
+.quick-buy-qty-controls button:hover {
+    background: #f0f0f0;
+}
+
+.quick-buy-qty-controls span {
+    width: 40px;
+    text-align: center;
+    font-weight: bold;
+    line-height: 35px;
+}
+
+/* Nút xác nhận mua dưới cùng */
+.btn-confirm-buy {
+    width: 100%;
+    padding: 15px;
+    background-color: #0ca960; /* Màu xanh lá chốt đơn */
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(12, 169, 96, 0.3);
+}
+
+.btn-confirm-buy:hover {
+    background-color: #098b4f;
+    transform: translateY(-2px);
 }

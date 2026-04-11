@@ -1,0 +1,259 @@
+/* --- NỀN VÀ KHUNG TỔNG THỂ --- */
+.checkout-page {
+    background-color: #f5f5f5; /* Nền xám nhạt để làm nổi bật các thẻ trắng */
+    padding: 40px 20px;
+    min-height: calc(100vh - 100px);
+}
+
+.checkout-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+/* Chia cột: Trái (Địa chỉ + Thanh toán) chiếm phần hơn, Phải (Bill) chiếm phần ít */
+.checkout-left {
+    flex: 2;
+}
+
+.checkout-right {
+    flex: 1.2;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky; /* Bảng tính tiền trượt theo màn hình */
+    top: 20px;
+}
+
+/* Tiêu đề của từng khu vực */
+.checkout-section-title {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 20px;
+    border-left: 4px solid #ee4d2d; /* Gạch viền cam nổi bật */
+    padding-left: 10px;
+}
+
+/* --- KHU VỰC ĐỊA CHỈ GIAO HÀNG --- */
+.checkout-address-card, .checkout-no-address {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border-top: 3px solid #ee4d2d; /* Đường viền trên giống phong cách Shopee */
+}
+
+.checkout-address-header {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.checkout-address-header strong {
+    font-size: 18px;
+    color: #333;
+}
+
+.checkout-address-header .divider {
+    color: #ccc;
+    margin: 0 10px;
+}
+
+.checkout-address-detail {
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    font-size: 15px;
+}
+
+.btn-change-address, .btn-setup-address {
+    color: #1976d2;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.btn-change-address:hover, .btn-setup-address:hover {
+    text-decoration: underline;
+    color: #115293;
+}
+
+/* --- KHU VỰC PHƯƠNG THỨC THANH TOÁN --- */
+.payment-methods {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.payment-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+    border: 1px solid #eee;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Hiệu ứng khi được chọn */
+.payment-option.selected {
+    border-color: #ee4d2d;
+    background-color: #fffaf9;
+}
+
+.payment-option input[type="radio"] {
+    accent-color: #ee4d2d;
+    transform: scale(1.2);
+}
+
+/* --- KHU VỰC TÓM TẮT ĐƠN HÀNG (CỘT PHẢI) --- */
+.checkout-items-list {
+    max-height: 350px;
+    overflow-y: auto; /* Cuộn nếu khách mua quá nhiều món */
+    margin-bottom: 20px;
+    padding-right: 5px;
+}
+
+/* Chỉnh thanh cuộn cho đẹp */
+.checkout-items-list::-webkit-scrollbar { width: 6px; }
+.checkout-items-list::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+
+.checkout-item {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px dashed #eee;
+}
+
+.checkout-item:last-child {
+    border-bottom: none;
+}
+
+.checkout-item img {
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #f0f0f0;
+}
+
+.checkout-item-info {
+    flex: 1;
+}
+
+.checkout-item-info h4 {
+    margin: 0 0 5px 0;
+    font-size: 15px;
+    color: #333;
+    line-height: 1.4;
+}
+
+.checkout-item-info p {
+    margin: 0;
+    color: #888;
+    font-size: 13px;
+}
+
+.checkout-item-price {
+    font-weight: bold;
+    color: #ee4d2d;
+    font-size: 15px;
+}
+
+/* Phần tính tiền */
+.checkout-summary {
+    background: #fafafa;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    color: #555;
+    font-size: 15px;
+}
+
+.total-line {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 2px dashed #ddd;
+    align-items: center;
+}
+
+.total-line span:first-child {
+    font-weight: bold;
+    color: #333;
+    font-size: 16px;
+}
+
+.final-price {
+    font-size: 26px;
+    font-weight: bold;
+    color: #ee4d2d;
+}
+
+/* Nút Đặt hàng */
+.btn-place-order {
+    width: 100%;
+    padding: 16px;
+    background-color: #ee4d2d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: uppercase;
+    box-shadow: 0 4px 10px rgba(238, 77, 45, 0.2);
+}
+
+.btn-place-order:hover:not(:disabled) {
+    background-color: #d73d1f;
+    transform: translateY(-2px);
+}
+
+.btn-place-order:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* --- RESPONSIVE CHO IPAD VÀ ĐIỆN THOẠI --- */
+@media (max-width: 992px) {
+    .checkout-container {
+        flex-direction: column;
+    }
+    
+    .checkout-left, .checkout-right {
+        width: 100%;
+    }
+    
+    .checkout-right {
+        position: static; /* Tắt chế độ trượt theo màn hình trên mobile */
+    }
+}
+
+@media (max-width: 576px) {
+    .checkout-page {
+        padding: 20px 10px;
+    }
+    
+    .checkout-address-card, .payment-methods, .checkout-right {
+        padding: 15px;
+    }
+    
+    .final-price {
+        font-size: 22px;
+    }
+}

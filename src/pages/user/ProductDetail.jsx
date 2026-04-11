@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import React from "react";
 import { supabase } from "../../supabaseClient";
-import { useParams, useOutletContext, useNavigate } from "react-router-dom";
+import { useParams, useOutletContext, useNavigate, Link } from "react-router-dom";
 import './ProductDetail.css'
 import Card from "../../components/Card";
 
@@ -15,6 +15,37 @@ const ProductDetail = () => {
     const [mainImage, setMainImage] = useState('');
     const [loading, setLoading] = useState(true);
     const [relatedProduct, setRelatedProduct] = useState([]);
+
+    // ---  STATE CHO POPUP MUA NHANH ---
+    const [showQuickBuy, setShowQuickBuy] = useState(false);
+    const [quantity, setQuantity] = useState(1);
+
+    const increaseQty = () => setQuantity(prev => prev + 1);
+    const decreaseQty = () => setQuantity(prev => (prev > 1 ? prev - 1 : 1));
+
+    // Mở popup và reset số lượng về 1
+    const handleOpenQuickBuy = () => {
+        setQuantity(1);
+        setShowQuickBuy(true);
+    };
+
+    // Hành động CHỐT ĐƠN
+    const confirmBuy = async () => {
+        // Kiểm tra xem khách đã đăng nhập chưa
+        const isSuccess = await handleBuy(product);
+
+        if (isSuccess) {
+            // Đóng gói dữ liệu lấy từ State 'product'
+            const itemToCheckout = {
+                id: product.id,
+                ten: product.ten,
+                gia: product.gia,
+                anh: product.anh,
+                quantity: quantity // Lấy đúng số lượng vừa bấm trong Popup
+            };
+            navigate('/checkout', { state: { itemsToCheckout: [itemToCheckout] } });
+        }
+    };
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -38,7 +69,7 @@ const ProductDetail = () => {
                     .from('products')
                     .select('*')
                     .neq('id', id)
-                    .limit(4); // chỉ lấy 4 món
+                    .limit(5);
 
                 if (!relatedError && relatedData) {
                     setRelatedProduct(relatedData);
@@ -92,22 +123,49 @@ const ProductDetail = () => {
 
                     {/* KHU VỰC 2 NÚT BẤM */}
                     <div className="product-actions">
-                        <button className="btn-add-cart" onClick={() => handleBuy(product)}>
-                            🛒 Thêm vào giỏ hàng
-                        </button>
+                        <Link to="/cart" className="link-add-cart">
+                            <button className="btn-add-cart" onClick={() => handleBuy(product)}>
+                                🛒 Thêm vào giỏ hàng
+                            </button>
+                        </Link>
 
-                        {/* Nút Mua ngay: Chờ handleBuy kiểm tra, nếu trả về true (đã đăng nhập) thì mới chuyển trang */}
-                        <button className="btn-buy-now" onClick={async () => {
-                            const isSuccess = await handleBuy(product); // Đợi kết quả kiểm tra
-                            if (isSuccess) {
-                                navigate('/cart'); // Chỉ nhảy sang giỏ hàng nếu kiểm tra thành công
-                            }
-                        }}>
+                        {/*  NÚT KÍCH HOẠT POPUP MUA NGAY */}
+                        <button onClick={handleOpenQuickBuy} className="btn-buy-now">
                             Mua ngay
                         </button>
                     </div>
                 </div>
 
+                {/* ---  GIAO DIỆN POPUP MUA NHANH (BẢN CARD) --- */}
+                {showQuickBuy && (
+                    <div className="quick-buy-overlay" onClick={() => setShowQuickBuy(false)}>
+                        <div className="quick-buy-modal card-style" onClick={e => e.stopPropagation()}>
+
+                            <button className="btn-close-quick-buy" onClick={() => setShowQuickBuy(false)}>✕</button>
+
+                            {/* Ảnh lấy từ product.anh */}
+                            <img className="quick-buy-cover" src={product.anh?.[0] || 'https://placehold.co/400x200'} alt={product.ten} />
+
+                            <div className="quick-buy-content">
+                                <h3 className="quick-buy-title">{product.ten}</h3>
+                                <p className="quick-buy-price">{Number(product.gia).toLocaleString('vi-VN')} đ</p>
+
+                                <div className="quick-buy-qty-section">
+                                    <span className="qty-label">Chọn số lượng:</span>
+                                    <div className="quick-buy-qty-controls">
+                                        <button onClick={decreaseQty}>-</button>
+                                        <span>{quantity}</span>
+                                        <button onClick={increaseQty}>+</button>
+                                    </div>
+                                </div>
+
+                                <button className="btn-confirm-buy" onClick={confirmBuy}>
+                                    Xác nhận • {(product.gia * quantity).toLocaleString('vi-VN')} đ
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                )}
             </div>
 
             {/* Khu vực gợi ý món ăn */}

@@ -40,7 +40,14 @@
     border-radius: 50%;
     margin: 0 auto 15px auto;
 }
+.manage-container{
+    background-color: #888;
+    padding: 25px;
+}
 
+.btn-go-to-orders{
+    text-decoration: none;
+}
 .profile-header h2 { margin: 0 0 5px 0; font-size: 22px; }
 .profile-header p { margin: 0; opacity: 0.8; }
 
