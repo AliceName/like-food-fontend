@@ -122,7 +122,7 @@ function Navbar(props) {
             {/* 4. Giỏ hàng & Account */}
             <div className="cart-icon">
                 <Link to="/cart" className="cart-icon-link">
-                    <span>Giỏ hàng: </span>
+                    <span className="link-main-page">Giỏ hàng: </span>
                     <span className="badge">{props.quantity}</span>
                 </Link>
 

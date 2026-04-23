@@ -10,8 +10,21 @@
 .category-bar {
     width: 250px;
     flex-shrink: 0;
+    position: sticky;
+    top: 130px; /* Cách mép trên cùng 130px để không bị thanh Navbar màu xanh đè lên */
+    height: fit-content; /* Rất quan trọng: Bắt chiều cao vừa đủ nội dung để sticky hoạt động */
+    max-height: calc(100vh - 150px); /* Nếu mảng danh mục quá dài, nó sẽ có thanh cuộn riêng */
+    overflow-y: auto; /* Cho phép cuộn riêng phần danh mục nếu tràn màn hình */
 }
 
+/* LÀM ĐẸP THANH CUỘN CỦA DANH MỤC */
+.category-bar::-webkit-scrollbar {
+    width: 4px;
+}
+.category-bar::-webkit-scrollbar-thumb {
+    background-color: #0ca960; /* Thanh cuộn màu xanh lá nhỏ gọn */
+    border-radius: 4px;
+}
 .category-title {
     font-size: 18px;
     margin-bottom: 20px;
