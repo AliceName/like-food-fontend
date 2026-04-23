@@ -51,9 +51,9 @@ Dự án được thiết kế theo mô hình quan hệ để đảm bảo tính
     npm install
 3. **Cấu hình biến môi trường:**
 Tạo file .env ở thư mục gốc và thêm thông tin kết nối Supabase của bạn:
-
+```bash
     VITE_SUPABASE_URL=your_supabase_project_url
     VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
 4. **Chạy dự án ở chế độ Development:**
-
+```bash
     npm run dev
