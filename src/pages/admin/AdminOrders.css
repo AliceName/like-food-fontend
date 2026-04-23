@@ -142,7 +142,69 @@
     color: #555;
 }
 
-/* Responsive cơ bản */
+/* =========================================
+   RESPONSIVE CƠ BẢN VÀ BIẾN BẢNG THÀNH CARD (MOBILE)
+========================================= */
 @media (max-width: 768px) {
-    .admin-stats-container { flex-direction: column; }
+    /* Ép 3 ô thống kê xếp dọc */
+    .admin-stats-container { 
+        flex-direction: column; 
+    }
+
+    /* 1. Ép bảng chiếm 100% màn hình */
+    .admin-orders-table, 
+    .admin-orders-table tbody, 
+    .admin-orders-table tr, 
+    .admin-orders-table td {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* 2. Ẩn dòng tiêu đề Thead */
+    .admin-orders-table thead {
+        display: none;
+    }
+
+    /* 3. Biến mỗi dòng (tr) thành 1 khung Card bo góc */
+    .admin-orders-table tr {
+        margin-bottom: 20px;
+        background-color: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 12px;
+        padding: 15px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    /* 4. Định dạng lại các ô dữ liệu (td) */
+    .admin-orders-table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px dashed #eee;
+        text-align: right; /* Ép nội dung chữ nhảy sang phải */
+    }
+
+    .admin-orders-table td:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    /* 5. Gắn tiêu đề giả vào bên trái */
+    .admin-orders-table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        color: #666;
+        font-size: 12px;
+        text-transform: uppercase;
+        margin-right: 15px;
+        text-align: left;
+    }
+
+    /* Đảm bảo dropdown trên điện thoại không bị quá to */
+    .status-dropdown {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
 }

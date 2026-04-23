@@ -1,5 +1,7 @@
-
-.logo{
+/* =========================================
+   1. CSS CHO MÀN HÌNH MÁY TÍNH (DESKTOP)
+========================================= */
+.logo {
     display: flex;
     align-items: center;
     height: 100px;
@@ -10,8 +12,6 @@
     object-fit: contain;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-
-
 
 .navbar {
     background-image: url('https://cdn.tgdd.vn/Files/2022/11/11/1486085/kham-pha-y-nghia-mau-xanh-la-cay-trong-cuoc-song-tinh-yeu-202211110618313706.jpg');
@@ -38,36 +38,43 @@
     cursor: pointer;
 }
 
-/*(Giỏ hàng & Tài khoản) */
-.account{
+.link-main-page {
+    text-decoration: none;
+    color: aliceblue;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* (Giỏ hàng & Tài khoản) */
+.account {
     display: flex;
     gap: 15px;
     align-items: center;
 }
 
-.username{
+.username {
     font-size: 14px;
     color: #fcf9f9;
     font-weight: bold;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.user-img{
+.user-img {
     height: 32px;
     width: auto;
 }
 
-.cart-icon{
+.cart-icon {
     display: flex;
     gap: 20px;
     align-items: center;
 }
 
-.cart-icon-link{
+.cart-icon-link {
     text-decoration: none;
     color: aliceblue;
 }
-.log-in{
+
+.log-in, .log-out {
     padding: 8px 15px;
     background-color: white;
     text-decoration: none;
@@ -75,15 +82,10 @@
     font-weight: bold;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: 0.3s;
+    border: none;
+    cursor: pointer;
 }
 
-.log-out{
-    padding: 8px 15px;
-    background-color: white;
-    border-radius: 5px;
-    font-weight: bold;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
 .badge {
     background-color: red;
     color: white;
@@ -92,17 +94,12 @@
     margin-left: 5px;
     font-weight: bold;
 }
-.menu-icon{
+
+.menu-icon {
     display: none;
 }
 
-.link-main-page{
-    text-decoration: none;
-    color: aliceblue;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* --- CSS CHO THANH TÌM KIẾM --- */
+/* --- THANH TÌM KIẾM --- */
 .search-bar {
     display: flex;
     align-items: center;
@@ -115,7 +112,7 @@
 }
 
 .search-bar:focus-within {
-    border-color: #0ca960; /* Sáng viền xanh khi click vào ô nhập */
+    border-color: #0ca960;
     background-color: #fff;
     box-shadow: 0 0 5px rgba(12, 169, 96, 0.2);
 }
@@ -144,102 +141,102 @@
     transform: scale(1.1);
 }
 
-/* Responsive cho điện thoại (ẩn bớt độ dài đi hoặc rớt dòng) */
-@media screen and (max-width: 768px) {
-    .search-input {
-        width: 120px;
-    }
-}
 
-/* --- RESPONSIVE CHO ĐIỆN THOẠI (Mobile) --- */
+/* =========================================
+   2. CSS CHO MÀN HÌNH ĐIỆN THOẠI (MOBILE)
+========================================= */
 @media screen and (max-width: 768px) {
+    /* Ép nền xanh tự giãn theo nội dung bên trong */
     .navbar {
-        flex-wrap: wrap; /* Cho phép các thành phần rớt dòng */
-        padding: 10px;
-        background-size: cover; /* Ép ảnh nền xanh lá phủ kín 100% chiều ngang */
-        background-position: center;
+        height: auto; 
+        min-height: 70px;
+        padding: 10px 15px 15px 15px;
+        flex-wrap: wrap; 
     }
 
-    /* Đẩy thanh tìm kiếm xuống dòng 2 và cho rộng 100% */
+    /* Thu nhỏ logo một chút cho đỡ tốn diện tích */
+    .logo {
+        height: auto;
+    }
+    .logo-img {
+        height: 40px;
+    }
+
+    /* Đẩy cụm Giỏ hàng - User - Đăng xuất sang sát nút Menu */
+    .cart-icon {
+        margin-left: auto;
+        margin-right: 15px;
+        gap: 10px;
+    }
+
+    .cart-icon-link span:first-child {
+        display: none; /* Giấu chữ "Giỏ hàng" */
+    }
+
+    .account {
+        gap: 5px;
+    }
+
+    .log-out, .log-in {
+        padding: 5px 8px;
+        font-size: 12px;
+    }
+
+    /* Nút 3 gạch (Menu) */
+    .menu-icon {
+        display: block;
+        font-size: 24px;
+        color: white;
+        cursor: pointer;
+    }
+
+    /* Đẩy thanh tìm kiếm xuống hàng 2 và cho rộng 100% */
     .search-bar {
-        order: 3; /* Đẩy xuống cuối cùng trong navbar */
+        order: 3; /* Đẩy xuống cuối */
         width: 100%;
-        margin: 10px 0 0 0;
+        margin: 15px 0 0 0; /* Cách xa hàng trên ra 15px */
         justify-content: space-between;
     }
 
     .search-input {
-        width: 100%; /* Ô nhập chữ chiếm hết chỗ trống */
+        width: 100%;
     }
 
-    /* Ẩn bớt chữ "Giỏ hàng" đi, chỉ giữ lại icon và số lượng cho gọn */
-    .cart-icon-link span:first-child {
-        display: none; 
-    }
-
-    /* Chỉnh lại khu vực icon người dùng và nút đăng xuất */
-    .account {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-    }
-    
-    .log-out {
-        padding: 5px 8px;
-        font-size: 12px;
-    }
-}
-/* mobile */
-@media(max-width:768px) {
-    .navbar {
-        height: 70px;
-        padding: 0 15px;
-    }
-
-    .menu-icon{
-        display: block;
-        font-size: 24px;
-        margin-right: 15px;
-        margin-left: 15px;
-        color: white;
-    }
-
-    .cart-icon{
-        margin-left: auto;
-        margin-right: 20px;
-    }
+    /* --- MENU XỔ XUỐNG --- */
     .nav-links {
         position: absolute;
-        top: 70px;
+        top: 100%; /* 🌟 Quan trọng: Luôn dính sát mép dưới của Navbar bất kể chiều cao Navbar là bao nhiêu */
         left: 0;
         width: 100%;
         background-color: antiquewhite;
         flex-direction: column;
         align-items: center;
-        padding: 20px 0;
+        padding: 10px 0;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         display: none;
-            /* đè lên sp */
         z-index: 999;
+        gap: 0; /* Bỏ gap mặc định để căn chỉnh padding tốt hơn */
     }
-    .nav-links.active{
+
+    .nav-links.active {
         display: flex;
     }
 
-    .link-main-page{
-        text-decoration: none;
-        color: #333;
-        font-size: 18px;
-        border: none;
-        font-weight: 500;
-    }
-    .nav-links li{
-        padding: 15px 0;
+    .nav-links li {
         width: 100%;
         text-align: center;
     }
 
     .nav-links li:hover {
         background-color: #f3e5b5; 
+    }
+
+    .nav-links .link-main-page {
+        display: block;
+        padding: 15px 0;
+        color: #333; /* Đổi màu chữ tối vì nền antiquewhite sáng */
+        font-size: 16px;
+        font-weight: 500;
+        box-shadow: none; /* Bỏ viền bóng trên điện thoại cho thanh thoát */
     }
 }

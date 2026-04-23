@@ -19,12 +19,15 @@ import Profile from './pages/user/UserProfile'
 import Checkout from './pages/user/Checkout'
 import UserOrder from './pages/user/UserOrders'
 import Search from './pages/user/Search';
+import Contact from './pages/user/Contact';
+import Product from './pages/user/Products';
 
 // ADMIN
 import AdminDashboard from './pages/admin/AdminDashboard'
 import ManageOrder from './pages/admin/AdminOrders'
 import AddProduct from './pages/admin/AdminAddProduct'
 import AdminEditProduct from './pages/admin/AdminEditProduct';
+import AdminUsers from './pages/admin/AdminUsers';
 
 function App() {
   return (
@@ -39,6 +42,8 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/userOrder" element={<UserOrder />} />
           <Route path="search" element={<Search />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="products" element={<Product />} />
         </Route>
 
         {/* Nhóm các page admin */}
@@ -46,7 +51,8 @@ function App() {
           <Route index element={<AdminDashboard />} />
           <Route path="/admin/manageOrder" element={<ManageOrder />} />
           <Route path="/admin/addProduct" element={<AddProduct />} />
-          <Route path="editProduct/:id" element={<AdminEditProduct />} />
+          <Route path="/admin/editProduct/:id" element={<AdminEditProduct />} />
+          <Route path="/admin/manageUsers" element={<AdminUsers />} />
         </Route>
         {/* Trang login */}
         <Route path='/login' element={<Login />} />

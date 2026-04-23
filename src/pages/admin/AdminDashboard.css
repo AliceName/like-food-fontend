@@ -127,3 +127,76 @@
     background-color: #d32f2f;
     color: white;
 }
+
+/* =========================================
+   RESPONSIVE CHO BẢNG QUẢN TRỊ TRÊN MOBILE
+========================================= */
+@media screen and (max-width: 768px) {
+    /* Đảm bảo toàn bộ bảng chiếm 100% chiều rộng */
+    .admin-manage-table, 
+    .admin-manage-table tbody, 
+    .admin-manage-table tr, 
+    .admin-manage-table td {
+        display: block;
+        width: 100%;
+    }
+
+    /* Ẩn hẳn dòng Tiêu đề cột (Thead) đi cho gọn */
+    .product-table-thead {
+        display: none;
+    }
+
+    /* Biến mỗi hàng (tr) thành một khung vuông (Card) */
+    .admin-manage-table tbody tr {
+        margin-bottom: 20px;
+        background-color: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        padding: 15px;
+    }
+
+    /* Định dạng lại từng ô dữ liệu (td) */
+    .admin-manage-table td {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 0;
+        border-bottom: 1px dashed #eee;
+    }
+
+    /* Dòng cuối cùng không cần nét đứt */
+    .admin-manage-table td:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    /* 🌟 CHÈN TIÊU ĐỀ GIẢ CHO TỪNG Ô */
+    .admin-manage-table td::before {
+        content: attr(data-label); /* Lấy chữ từ HTML để làm tiêu đề */
+        font-weight: bold;
+        color: #555;
+        font-size: 13px;
+        text-transform: uppercase;
+        margin-right: 15px;
+    }
+
+    /* Căn chỉnh lại cụm nút bấm */
+    .admin-manage-table td:last-child {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px; /* Tạo khoảng trống giữa nút Sửa và Xóa */
+    }
+
+    /* Sửa lại thanh Tiêu đề và Nút Thêm cho vừa màn hình */
+    .manage-product {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .btn-add-product {
+        width: 100%; /* Nút thêm dài hết cỡ */
+        text-align: center;
+    }
+}

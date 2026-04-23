@@ -1,0 +1,149 @@
+.users-container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.manage-users-header {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f1f2f6;
+}
+
+.label-manage {
+    margin: 0 0 5px 0;
+    font-size: 24px;
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+.subtitle-manage {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.admin-manage-users {
+    overflow-x: auto;
+}
+
+.admin-users-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 15px;
+}
+
+.users-table-thead th {
+    background-color: #f8f9fa;
+    color: #495057;
+    padding: 15px;
+    font-weight: 600;
+    border-bottom: 2px solid #dee2e6;
+    text-transform: uppercase;
+    font-size: 13px;
+}
+
+.admin-users-table td {
+    padding: 15px;
+    vertical-align: middle;
+    border-bottom: 1px solid #f1f2f6;
+    color: #333;
+}
+
+.admin-users-table tbody tr:hover {
+    background-color: #fcfcfc;
+}
+
+/* Kiểu dáng cho ID */
+.user-uuid {
+    background: #e9ecef;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 13px;
+    color: #555;
+}
+
+/* Huy hiệu Vai trò */
+.role-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.admin-badge {
+    background-color: #ffebd3;
+    color: #e67e22;
+}
+
+.user-badge {
+    background-color: #e3f2fd;
+    color: #1976d2;
+}
+
+/* Dropdown cấp quyền */
+.role-dropdown {
+    padding: 6px 10px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    outline: none;
+    cursor: pointer;
+    background: white;
+    font-size: 13px;
+}
+
+/* =========================================
+   RESPONSIVE CHO ĐIỆN THOẠI (BIẾN THÀNH CARD)
+========================================= */
+@media screen and (max-width: 768px) {
+    .users-container { padding: 15px; }
+    
+    .admin-users-table, 
+    .admin-users-table tbody, 
+    .admin-users-table tr, 
+    .admin-users-table td {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .users-table-thead { display: none; }
+
+    .admin-users-table tr {
+        margin-bottom: 15px;
+        background-color: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 12px;
+        padding: 15px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .admin-users-table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px dashed #eee;
+        text-align: right;
+    }
+
+    .admin-users-table td:last-child {
+        border-bottom: none;
+    }
+
+    .admin-users-table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        color: #666;
+        font-size: 12px;
+        text-transform: uppercase;
+        margin-right: 15px;
+        text-align: left;
+    }
+}

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../../supabaseClient';
 import './AdminAddProduct.css';
-
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 const AdminAddProduct = () => {
+    const navigate = useNavigate();
     // Các state quản lý form
     const [ten, setTen] = useState('');
     const [phanLoai, setPhanLoai] = useState('Trà sữa');
@@ -71,7 +73,13 @@ const AdminAddProduct = () => {
 
         } catch (error) {
             console.error("Lỗi tải ảnh:", error);
-            alert("Lỗi tải ảnh: " + error.message);
+            // Đã chuyển sang Swal báo lỗi
+            Swal.fire({
+                icon: 'error',
+                title: 'Lỗi tải ảnh',
+                text: error.message,
+                confirmButtonColor: '#e74c3c'
+            });
         }
     };
 
@@ -88,14 +96,25 @@ const AdminAddProduct = () => {
     const handleSubmit = async (e) => {
         e.preventDefault(); // Chặn hành vi load lại trang của Form
 
+        // Đã chuyển sang Swal báo lỗi thiếu thông tin (Warning)
         if (!ten || !gia || images[0].trim() === '' || !selectedCategoryId) {
-            alert("Vui lòng nhập đầy đủ Tên, Giá, Phân loại và ít nhất 1 hình ảnh!");
+            Swal.fire({
+                icon: 'warning',
+                title: 'Thiếu thông tin!',
+                text: 'Vui lòng nhập đầy đủ Tên, Giá, Phân loại và tải lên ít nhất 1 hình ảnh.',
+                confirmButtonColor: '#f39c12'
+            });
             return;
         }
 
         // Validate cơ bản
         if (!ten || !gia || images[0].trim() === '') {
-            alert("Vui lòng nhập Tên, Giá và ít nhất 1 hình ảnh!");
+            Swal.fire({
+                icon: 'warning',
+                title: 'Thiếu thông tin!',
+                text: 'Vui lòng nhập đầy đủ Tên, Giá và tải lên ít nhất 1 hình ảnh.',
+                confirmButtonColor: '#f39c12'
+            });
             return;
         }
 
@@ -117,14 +136,27 @@ const AdminAddProduct = () => {
 
             if (error) throw error; // Nếu RLS chặn (không phải admin), nó sẽ quăng lỗi ở đây
 
-            alert("Đã thêm sản phẩm thành công lên Thực đơn!");
-
-            // Xóa trắng form để nhập món tiếp theo
-            setTen(''); setGia(''); setDescription(''); setImages(['']); setPhanLoai('Trà sữa');
-
+            Swal.fire({
+                title: 'Thành công!',
+                text: 'Đã thêm sản phẩm thành công lên Thực đơn!',
+                icon: 'success',
+                confirmButtonText: 'Tuyệt vời',
+                confirmButtonColor: '#0ca960', // Đổi màu nút bấm thành màu xanh lá của quán bạn
+            }).then((result) => {
+                // Đoạn code trong này sẽ chạy SAU KHI người dùng bấm nút "Tuyệt vời"
+                if (result.isConfirmed) {
+                    navigate('/admin'); // Chuyển về trang quản lý
+                }
+            });
         } catch (error) {
             console.error("Lỗi thêm sản phẩm:", error);
-            alert("Thêm thất bại. Lỗi: " + error.message);
+            // 🌟 Đã chuyển sang Swal báo lỗi hệ thống
+            Swal.fire({
+                icon: 'error',
+                title: 'Thêm thất bại!',
+                text: error.message,
+                confirmButtonColor: '#e74c3c'
+            });
         } finally {
             setIsSubmitting(false);
         }

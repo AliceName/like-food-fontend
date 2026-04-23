@@ -1,0 +1,109 @@
+.products-page {
+    display: flex;
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+    gap: 30px;
+}
+
+/* --- THANH DANH MỤC --- */
+.category-bar {
+    width: 250px;
+    flex-shrink: 0;
+}
+
+.category-title {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #333;
+    padding-left: 10px;
+    border-left: 4px solid #0ca960;
+}
+
+.category-list {
+    list-style: none;
+    padding: 0;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+
+.category-list li {
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-bottom: 1px solid #f5f5f5;
+    font-weight: 500;
+    color: #555;
+}
+
+.category-list li:hover {
+    background-color: #f0fff4;
+    color: #0ca960;
+}
+
+.category-list li.active {
+    background-color: #0ca960;
+    color: #fff;
+}
+
+/* --- NỘI DUNG SẢN PHẨM --- */
+.products-content {
+    flex-grow: 1;
+}
+
+.products-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.products-header h2 {
+    font-size: 24px;
+    color: #222;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+/* --- RESPONSIVE CHO MOBILE --- */
+@media screen and (max-width: 768px) {
+    .products-page {
+        flex-direction: column;
+        margin: 15px auto;
+    }
+
+    .category-bar {
+        width: 100%;
+    }
+
+    .category-list {
+        display: flex;
+        overflow-x: auto; /* Vuốt ngang danh mục trên mobile */
+        white-space: nowrap;
+        box-shadow: none;
+        background: transparent;
+    }
+
+    .category-list li {
+        border-bottom: none;
+        border-radius: 20px;
+        background: #eee;
+        margin-right: 10px;
+        padding: 8px 18px;
+        font-size: 14px;
+    }
+
+    .category-list li.active {
+        background: #0ca960;
+    }
+
+    .products-header h2 {
+        font-size: 18px;
+    }
+}

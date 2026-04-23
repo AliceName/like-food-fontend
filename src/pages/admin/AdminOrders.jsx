@@ -94,19 +94,19 @@ const AdminOrders = () => {
                     <tbody>
                         {orders.map(order => (
                             <tr key={order.id}>
-                                <td><strong>DH{String(order.id).padStart(3, '0')}</strong></td>
-                                <td>
+                                <td data-label="MÃ ĐƠN"><strong>DH{String(order.id).padStart(3, '0')}</strong></td>
+                                <td data-label="THỜI GIAN">
                                     {new Date(order.created_at).toLocaleDateString('vi-VN')} <br />
                                     <span className="time-text">{new Date(order.created_at).toLocaleTimeString('vi-VN')}</span>
                                 </td>
-                                <td>
+                                <td data-label="KHÁCH HÀNG">
                                     <strong>{order.customer_name}</strong> <br />
                                     <span className="phone-text">{order.phone}</span>
                                 </td>
-                                <td className="price-text">
+                                <td data-label="TỔNG TIỀN" className="price-text">
                                     {Number(order.total_price).toLocaleString('vi-VN')} đ
                                 </td>
-                                <td>
+                                <td data-label="TRẠNG THÁI">
                                     {/* Huy hiệu màu sắc thay đổi theo Status */}
                                     <span className={`admin-badge ${order.status === 'Chờ xác nhận' ? 'pending' :
                                         order.status === 'Đang giao' ? 'shipping' :
@@ -115,7 +115,7 @@ const AdminOrders = () => {
                                         {order.status}
                                     </span>
                                 </td>
-                                <td>
+                                <td data-label="HÀNH ĐỘNG">
                                     {/* Dropdown chuyển trạng thái */}
                                     <select
                                         className="status-dropdown"

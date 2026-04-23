@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Outlet, Link, useNavigate } from "react-router-dom";
 import './AdminLayout.css';
 import { supabase } from "../supabaseClient";
 
 const AdminLayout = () => {
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const navigate = useNavigate();
+
+    // 🌟 ĐÃ BỔ SUNG HÀM ĐÓNG MENU
+    const closeSidebar = () => setIsSidebarOpen(false);
 
     const handleLogout = async () => {
         await supabase.auth.signOut();
@@ -12,43 +16,54 @@ const AdminLayout = () => {
     };
 
     return (
-        <div className="admin-wrapper">
-            {/* Thanh menu bên trái */}
-            <aside className="admin-sidebar">
-                <div className="admin-brand">
-                    <h2>BẢNG QUẢN TRỊ</h2>
-                </div>
-                <ul className="admin-menu">
-                    <li>
-                        <Link to="/admin" className="admin-link">Quản lý sản phẩm</Link>
-                    </li>
-                    <li>
-                        <Link to="/admin/manageOrder" className="admin-link">Quản lý đơn hàng</Link>
-                    </li>
-                    <li>
-                        <Link to="#" className="admin-link">Quản lý người dùng</Link>
-                    </li>
+        <div className="admin-container">
+            {/* 🌟 THANH HEADER RIÊNG CHO MOBILE CHỨA NÚT 3 GẠCH */}
+            <div className="mobile-admin-header">
+                <button
+                    className="admin-menu-btn"
+                    onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+                >
+                    ☰
+                </button>
+                <span className="admin-mobile-title">LIKEFOOD ADMIN</span>
+            </div>
+
+            {/* 🌟 THANH SIDEBAR (Thêm class 'open' nếu state là true) */}
+            <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
+
+                {/* Nút X để đóng menu trên Mobile */}
+                <button className="close-sidebar-btn" onClick={closeSidebar}>✕</button>
+
+                <div className="sidebar-logo">BẢNG QUẢN TRỊ</div>
+
+                <ul className="sidebar-menu">
+                    <li><Link to="/admin" onClick={closeSidebar}>Quản lý sản phẩm</Link></li>
+                    <li><Link to="/admin/manageOrder" onClick={closeSidebar}>Quản lý đơn hàng</Link></li>
+                    <li><Link to="/admin/manageUsers" onClick={closeSidebar}>Quản lý người dùng</Link></li>
                 </ul>
 
-                <div className="admin-footer">
-                    <button className="btn-admin-logout" onClick={handleLogout}>
+                {/* Bọc nút đăng xuất vào một thẻ div để dồn xuống cuối bằng CSS */}
+                <div className="sidebar-footer">
+                    <Link to="/" className="btn-view-shop" onClick={closeSidebar}>
+                        Xem giao người dùng
+                    </Link>
+
+                    <button className="btn-logout" onClick={handleLogout}>
                         Đăng xuất
                     </button>
                 </div>
-            </aside>
+            </div>
 
-            <main className="admin-main">
-                <header className="admin-header">
-                    <h3>Xin chào, Admin!</h3>
-                    <Link to="/" className="btn-back-shop">
-                        Xem trang khách hàng
-                    </Link>
-                </header>
+            {/* Khu vực nội dung bên phải */}
+            <div className="admin-content">
+                {/* BẬT OUTLET ĐỂ HIỂN THỊ TRANG CON */}
+                <Outlet />
+            </div>
 
-                <div className="admin-content">
-                    <Outlet />
-                </div>
-            </main>
+            {/* Lớp nền mờ tối (Overlay) khi mở menu trên điện thoại */}
+            {isSidebarOpen && (
+                <div className="sidebar-overlay" onClick={closeSidebar}></div>
+            )}
         </div>
     );
 }

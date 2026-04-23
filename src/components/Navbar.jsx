@@ -99,8 +99,12 @@ function Navbar(props) {
                         <Link to="/admin" className="link-main-page">Quản lý sản phẩm</Link>
                     </li>
                 )}
-                <li onClick={() => setOpenMenu(false)}>Sản phẩm</li>
-                <li onClick={() => setOpenMenu(false)}>Liên hệ</li>
+                <li onClick={() => setOpenMenu(false)}>
+                    <Link to="/products" className="link-main-page">Sản phẩm</Link>
+                </li>
+                <li onClick={() => setOpenMenu(false)}>
+                    <Link to="/contact" className="link-main-page">Liên hệ</Link>
+                </li>
             </ul>
 
             {/* 🌟 3. THANH TÌM KIẾM MỚI */}

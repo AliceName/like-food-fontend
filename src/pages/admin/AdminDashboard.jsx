@@ -54,7 +54,7 @@ const AdminDashboard = () => {
     };
 
     return (
-        <div className="admin-container">
+        <div className="dashboard-container">
             <div className="manage-product">
                 <h2 className="label-manage">Quản lý món ăn</h2>
                 <Link to="/admin/addProduct" className="btn-add-product">Thêm món mới</Link>
@@ -84,21 +84,21 @@ const AdminDashboard = () => {
                         ) : (
                             products.map((item) => (
                                 <tr key={item.id}>
-                                    <td>{item.id}</td>
-                                    <td>
+                                    <td data-label="ID">{item.id}</td>
+                                    <td data-label="HÌNH ẢNH">
                                         <img
                                             src={item.anh && item.anh.length > 0 ? item.anh[0] : 'https://placehold.co/100x100?text=No+Image'}
                                             alt={item.ten}
                                             style={{ width: '60px', height: '60px', objectFit: 'cover', borderRadius: '8px' }}
                                         />
                                     </td>
-                                    <td>{item.ten}</td>
-                                    <td>
+                                    <td data-label="TÊN SẢN PHẨM">{item.ten}</td>
+                                    <td data-label="GIÁ BÁN">
                                         {/* Format giá tiền Việt Nam */}
                                         {Number(item.gia).toLocaleString('vi-VN')} đ
                                     </td>
 
-                                    <td>
+                                    <td data-label="HÀNH ĐỘNG">
                                         <button className="btn-sua" onClick={() => handleEdit(item.id)}>Sửa</button>
                                         <button onClick={() => handleDelete(item.id, item.ten)}>
                                             Xóa
