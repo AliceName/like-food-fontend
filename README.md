@@ -1,4 +1,4 @@
-# 🍕 LIKEFOOD - Hệ thống Quản lý & Đặt món ăn Trực tuyến
+# 🍕 LIKEFOOD - Hệ thống bán đặc sản - Chưa hoàn thiện cần nâng cấp tìm kiếm, giao diện, tốc độ truy xuất
 
 LIKEFOOD là một ứng dụng web hiện đại được xây dựng để hỗ trợ quản lý thực đơn và đặt món ăn trực tuyến. Dự án tập trung vào trải nghiệm người dùng mượt mà, khả năng quản trị mạnh mẽ và tích hợp các công nghệ đám mây tiên tiến.
 
