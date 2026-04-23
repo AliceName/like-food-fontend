@@ -54,6 +54,7 @@ Tạo file .env ở thư mục gốc và thêm thông tin kết nối Supabase c
 ```bash
     VITE_SUPABASE_URL=your_supabase_project_url
     VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+
 4. **Chạy dự án ở chế độ Development:**
 ```bash
     npm run dev
