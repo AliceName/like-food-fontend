@@ -4,6 +4,7 @@ import { supabase } from "../../supabaseClient";
 import { useParams, useOutletContext, useNavigate, Link } from "react-router-dom";
 import './ProductDetail.css'
 import Card from "../../components/Card";
+import Loading from '../../components/Loading';
 
 const ProductDetail = () => {
     const { id } = useParams();
@@ -52,7 +53,7 @@ const ProductDetail = () => {
             try {
                 const { data, error } = await supabase
                     .from('products')
-                    .select('*')
+                    .select('*, categories(name)')
                     .eq('id', id)
                     .single();
 
@@ -68,6 +69,7 @@ const ProductDetail = () => {
                 const { data: relatedData, error: relatedError } = await supabase
                     .from('products')
                     .select('*')
+                    .eq('category_id', data.category_id)
                     .neq('id', id)
                     .limit(5);
 
@@ -84,7 +86,7 @@ const ProductDetail = () => {
         fetchProduct();
     }, [id, navigate]);
 
-    if (loading) return <h2 style={{ textAlign: 'center', marginTop: '50px' }}>Đang tải thông tin món ăn...</h2>;
+    if (loading) return <Loading text="Đang tải dữ liệu ..." />;
     if (!product) return null;
 
     return (
@@ -111,7 +113,7 @@ const ProductDetail = () => {
                 {/* CỘT PHẢI: THÔNG TIN VÀ NÚT MUA */}
                 <div className="product-info-section">
                     <h1 className="product-title">{product.ten}</h1>
-                    <p className="product-category">Phân loại: {product.phan_loai}</p>
+                    <p className="product-category">Phân loại: {product.categories?.name || 'Đang cập nhật'}</p>
 
                     <h2 className="product-price">{product.gia
                         ? `${Number(String(product.gia).replace(/\D/g, '')).toLocaleString('vi-VN')} đ`

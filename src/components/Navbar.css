@@ -101,6 +101,94 @@
     color: aliceblue;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+/* --- CSS CHO THANH TÌM KIẾM --- */
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #f1f3f5;
+    border-radius: 20px;
+    padding: 4px 12px;
+    margin: 0 15px;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.search-bar:focus-within {
+    border-color: #0ca960; /* Sáng viền xanh khi click vào ô nhập */
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(12, 169, 96, 0.2);
+}
+
+.search-input {
+    border: none;
+    background: transparent;
+    outline: none;
+    padding: 6px;
+    font-size: 14px;
+    width: 180px;
+    color: #333;
+}
+
+.search-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #555;
+    padding: 0 5px;
+    transition: transform 0.2s;
+}
+
+.search-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Responsive cho điện thoại (ẩn bớt độ dài đi hoặc rớt dòng) */
+@media screen and (max-width: 768px) {
+    .search-input {
+        width: 120px;
+    }
+}
+
+/* --- RESPONSIVE CHO ĐIỆN THOẠI (Mobile) --- */
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-wrap: wrap; /* Cho phép các thành phần rớt dòng */
+        padding: 10px;
+        background-size: cover; /* Ép ảnh nền xanh lá phủ kín 100% chiều ngang */
+        background-position: center;
+    }
+
+    /* Đẩy thanh tìm kiếm xuống dòng 2 và cho rộng 100% */
+    .search-bar {
+        order: 3; /* Đẩy xuống cuối cùng trong navbar */
+        width: 100%;
+        margin: 10px 0 0 0;
+        justify-content: space-between;
+    }
+
+    .search-input {
+        width: 100%; /* Ô nhập chữ chiếm hết chỗ trống */
+    }
+
+    /* Ẩn bớt chữ "Giỏ hàng" đi, chỉ giữ lại icon và số lượng cho gọn */
+    .cart-icon-link span:first-child {
+        display: none; 
+    }
+
+    /* Chỉnh lại khu vực icon người dùng và nút đăng xuất */
+    .account {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+    
+    .log-out {
+        padding: 5px 8px;
+        font-size: 12px;
+    }
+}
 /* mobile */
 @media(max-width:768px) {
     .navbar {

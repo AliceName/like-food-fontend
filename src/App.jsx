@@ -18,9 +18,13 @@ import UpdatePassword from './pages/UpdatePassword';
 import Profile from './pages/user/UserProfile'
 import Checkout from './pages/user/Checkout'
 import UserOrder from './pages/user/UserOrders'
+import Search from './pages/user/Search';
 
 // ADMIN
 import AdminDashboard from './pages/admin/AdminDashboard'
+import ManageOrder from './pages/admin/AdminOrders'
+import AddProduct from './pages/admin/AdminAddProduct'
+import AdminEditProduct from './pages/admin/AdminEditProduct';
 
 function App() {
   return (
@@ -34,11 +38,15 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/userOrder" element={<UserOrder />} />
+          <Route path="search" element={<Search />} />
         </Route>
 
         {/* Nhóm các page admin */}
         <Route path='/admin' element={<AdminLayout />}>
           <Route index element={<AdminDashboard />} />
+          <Route path="/admin/manageOrder" element={<ManageOrder />} />
+          <Route path="/admin/addProduct" element={<AddProduct />} />
+          <Route path="editProduct/:id" element={<AdminEditProduct />} />
         </Route>
         {/* Trang login */}
         <Route path='/login' element={<Login />} />

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "../../supabaseClient";
 import "./AdminDashboard.css";
 
 const AdminDashboard = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
     // gọi dữ liệu
     const fetchProducts = async () => {
@@ -29,6 +31,10 @@ const AdminDashboard = () => {
         fetchProducts();
     }, []);
 
+    // xử lý hàm sửa chức năng
+    const handleEdit = async (id) => {
+        navigate(`/admin/editProduct/${id}`);
+    }
     //  xử lý hàm xoá món ăn
     const handleDelete = async (id, tenMon) => {
         if (window.confirm(`Bạn có chắc muốn xoá món "${tenMon}" không? Hành động này không thể hoàn tác!`)) {
@@ -51,7 +57,7 @@ const AdminDashboard = () => {
         <div className="admin-container">
             <div className="manage-product">
                 <h2 className="label-manage">Quản lý món ăn</h2>
-                <button className="btn-add-product">Thêm món mới</button>
+                <Link to="/admin/addProduct" className="btn-add-product">Thêm món mới</Link>
             </div>
 
             <div className="admin-manage-product">
@@ -80,7 +86,11 @@ const AdminDashboard = () => {
                                 <tr key={item.id}>
                                     <td>{item.id}</td>
                                     <td>
-                                        <img src={item.anh} alt={item.ten} />
+                                        <img
+                                            src={item.anh && item.anh.length > 0 ? item.anh[0] : 'https://placehold.co/100x100?text=No+Image'}
+                                            alt={item.ten}
+                                            style={{ width: '60px', height: '60px', objectFit: 'cover', borderRadius: '8px' }}
+                                        />
                                     </td>
                                     <td>{item.ten}</td>
                                     <td>
@@ -89,7 +99,7 @@ const AdminDashboard = () => {
                                     </td>
 
                                     <td>
-                                        <button className="btn-sua">Sửa</button>
+                                        <button className="btn-sua" onClick={() => handleEdit(item.id)}>Sửa</button>
                                         <button onClick={() => handleDelete(item.id, item.ten)}>
                                             Xóa
                                         </button>

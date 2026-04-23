@@ -1,0 +1,161 @@
+.admin-add-product-page {
+    padding: 30px;
+    background-color: #f4f6f9;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.form-container {
+    background: white;
+    width: 100%;
+    max-width: 800px;
+    padding: 35px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    align-self: flex-start;
+}
+
+.form-title {
+    margin: 0 0 5px 0;
+    color: #333;
+    font-size: 26px;
+}
+
+.form-subtitle {
+    color: #777;
+    margin-bottom: 25px;
+    font-size: 15px;
+}
+
+.add-product-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #444;
+    font-size: 14px;
+}
+
+.required {
+    color: #ee4d2d;
+}
+
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: inherit;
+    outline: none;
+    transition: 0.2s;
+    background: #fdfdfd;
+}
+
+.form-group input:focus, 
+.form-group select:focus, 
+.form-group textarea:focus {
+    border-color: #0ca960;
+    box-shadow: 0 0 0 3px rgba(12, 169, 96, 0.1);
+    background: white;
+}
+
+/* Khu vực nhập nhiều link ảnh */
+.image-inputs-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #fafafa;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px dashed #ccc;
+}
+
+.image-input-row {
+    display: flex;
+    gap: 10px;
+}
+
+.image-input-row input {
+    flex: 1;
+}
+
+.btn-remove-img {
+    background: #ffe3e3;
+    color: #ee4d2d;
+    border: none;
+    width: 45px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.btn-remove-img:hover {
+    background: #ee4d2d;
+    color: white;
+}
+
+.btn-add-img {
+    align-self: flex-start;
+    background: transparent;
+    color: #0ca960;
+    border: 1px solid #0ca960;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.btn-add-img:hover {
+    background: #0ca960;
+    color: white;
+}
+
+/* Nút LƯU to bự */
+.btn-submit-product {
+    margin-top: 15px;
+    padding: 16px;
+    background-color: #0ca960;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(12, 169, 96, 0.2);
+}
+
+.btn-submit-product:hover {
+    background-color: #098b4f;
+}
+
+.btn-submit-product:disabled {
+    background-color: #9bd7ba;
+    cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .form-row { flex-direction: column; gap: 20px; }
+    .form-container { padding: 25px 20px; }
+}

@@ -1,0 +1,48 @@
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 20px;
+    width: 100%;
+    min-height: 250px; /* Tạo khoảng trống đủ rộng để không bị hụt giao diện */
+}
+
+/* Vòng xoay (Spinner) */
+.spinner {
+    width: 45px;
+    height: 45px;
+    border: 5px solid #e1e8ed; /* Viền xám nhạt */
+    border-top: 5px solid #0ca960; /* Viền xanh lá chủ đạo chạy xung quanh */
+    border-radius: 50%;
+    animation: spin 1s linear infinite; /* Xoay liên tục */
+    margin-bottom: 15px;
+}
+
+/* Chữ hiển thị */
+.loading-text {
+    color: #555;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    animation: pulse 1.5s ease-in-out infinite; /* Hiệu ứng nhấp nháy mờ ảo */
+}
+
+/* --- ĐỊNH NGHĨA CHUYỂN ĐỘNG (ANIMATIONS) --- */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.4;
+    }
+}

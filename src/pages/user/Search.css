@@ -1,0 +1,45 @@
+.search-page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    min-height: 60vh;
+}
+
+.search-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.keyword-highlight {
+    color: #0ca960; /* Màu xanh lá đặc trưng của quán */
+    font-style: italic;
+}
+
+/* Lưới hiển thị kết quả (Dàn các thẻ Card giống trang chủ) */
+.search-results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+/* Giao diện khi không tìm thấy món */
+.no-results {
+    text-align: center;
+    padding: 50px 0;
+    color: #666;
+}
+
+.no-results-img {
+    width: 120px;
+    opacity: 0.6;
+    margin-bottom: 20px;
+}
+
+.no-results h3 {
+    font-size: 20px;
+    color: #444;
+    margin-bottom: 10px;
+}

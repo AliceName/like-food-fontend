@@ -34,6 +34,7 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
     box-shadow: 0 4px 6px rgba(12, 169, 96, 0.2);
+    text-decoration: none;
 }
 
 .btn-add-product:hover {

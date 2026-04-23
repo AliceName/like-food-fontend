@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useOutletContext } from 'react-router-dom'
 import Card from '../../components/Card'
 import { supabase } from '../../supabaseClient'
+import Loading from '../../components/Loading';
 
 function HomePage() {
 
@@ -32,7 +33,7 @@ function HomePage() {
             <div>
                 {/* Loading.... */}
                 {listProducts.length === 0 ? (
-                    <p>Loanding.....</p>
+                    <Loading text="Đang tải dữ liệu món ăn..." />
                 ) : (
                     <div className='product-container'>
                         {listProducts.map((food) => (
