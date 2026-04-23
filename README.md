@@ -48,7 +48,7 @@ Dự án được thiết kế theo mô hình quan hệ để đảm bảo tính
    git clone [https://github.com/your-username/like-food-frontend.git](https://github.com/your-username/like-food-frontend.git)
    cd like-food-frontend
 2. **Cài đặt thư viện:**
-    npm install
+    ``` npm install ```
 3. **Cấu hình biến môi trường:**
 Tạo file .env ở thư mục gốc và thêm thông tin kết nối Supabase của bạn:
 ```
