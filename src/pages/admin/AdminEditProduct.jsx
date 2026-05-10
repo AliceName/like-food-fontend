@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { supabase } from "../../supabaseClient"; // Chú ý import supabase
 import Loading from '../../components/Loading'; // Đã import Loading xịn xò
+import Swal from 'sweetalert2';
 import './AdminAddProduct.css';
 
 const AdminEditProduct = () => {
@@ -99,8 +100,26 @@ const AdminEditProduct = () => {
     // 🌟 LOGIC CẬP NHẬT SẢN PHẨM LÊN SUPABASE
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const rawPrice = Number(gia.replace(/\./g, ''));
         if (!ten || !gia || !categoryId) {
-            alert("Vui lòng nhập đủ thông tin cơ bản!"); return;
+            Swal.fire({
+                icon: 'warning',
+                title: 'Thiếu thông tin!',
+                text: 'Vui lòng nhập đầy đủ Tên, Giá và Phân loại cơ bản!',
+                confirmButtonColor: '#f39c12'
+            });
+            return;
+        }
+
+        // Validate for negative price
+        if (rawPrice < 0) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Giá không hợp lệ!',
+                text: 'Giá bán không được là số âm. Vui lòng nhập lại!',
+                confirmButtonColor: '#f39c12'
+            });
+            return;
         }
         setIsSubmitting(true);
 
@@ -110,7 +129,7 @@ const AdminEditProduct = () => {
             const updatedProduct = {
                 ten: ten,
                 category_id: Number(categoryId),
-                gia: Number(gia),
+                gia: rawPrice,
                 description: description,
                 anh: validImages
             };
@@ -122,18 +141,48 @@ const AdminEditProduct = () => {
 
             if (error) throw error;
 
-            alert("Cập nhật sản phẩm thành công!");
-            navigate('/admin');
+            Swal.fire({
+                title: 'Thành công!',
+                text: 'Đã cập nhật thông tin món ăn thành công!',
+                icon: 'success',
+                confirmButtonText: 'Tuyệt vời',
+                confirmButtonColor: '#0ca960',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate('/admin'); // Chuyển về trang quản lý sau khi bấm OK
+                }
+            });
 
         } catch (error) {
             console.error("Lỗi sửa sản phẩm:", error);
-            alert("Sửa thất bại. Lỗi: " + error.message);
+
+            // Thông báo Lỗi hệ thống
+            Swal.fire({
+                icon: 'error',
+                title: 'Cập nhật thất bại!',
+                text: 'Đã xảy ra lỗi: ' + error.message,
+                confirmButtonColor: '#e74c3c'
+            });
         } finally {
             setIsSubmitting(false);
         }
     };
 
-    // 🌟 HIỂN THỊ VÒNG XOAY LOADING ĐẸP MẮT
+    // HÀM TỰ ĐỘNG FORMAT GIÁ TIỀN (THÊM DẤU CHẤM)
+    const handlePriceChange = (e) => {
+        // 1. Lấy giá trị người dùng nhập, xóa bỏ mọi ký tự KHÔNG phải là số
+        let rawValue = e.target.value.replace(/\D/g, '');
+
+        // 2. Nếu có số, thì định dạng lại với dấu chấm chuẩn Việt Nam
+        if (rawValue !== '') {
+            rawValue = Number(rawValue).toLocaleString('vi-VN');
+        }
+
+        // 3. Lưu vào state
+        setGia(rawValue);
+    };
+
+    // HIỂN THỊ VÒNG XOAY LOADING ĐẸP MẮT
     if (loadingData) return <Loading text="Đang tải dữ liệu món ăn..." />;
 
     return (
@@ -161,7 +210,7 @@ const AdminEditProduct = () => {
                     <div className="form-row">
                         <div className="form-group">
                             <label>Giá bán (VNĐ) <span className="required">*</span></label>
-                            <input type="number" value={gia} onChange={(e) => setGia(e.target.value)} />
+                            <input type="text" placeholder="VD: 55.000" value={gia} onChange={handlePriceChange} />
                         </div>
                     </div>
 
@@ -170,7 +219,7 @@ const AdminEditProduct = () => {
                         <textarea rows="4" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
                     </div>
 
-                    {/* 🌟 GIAO DIỆN CHỌN ẢNH ĐÃ ĐƯỢC ĐỒNG BỘ VỚI LOGIC */}
+                    {/* GIAO DIỆN CHỌN ẢNH ĐÃ ĐƯỢC ĐỒNG BỘ VỚI LOGIC */}
                     <div className="form-group">
                         <label>Hình ảnh (Tải lên từ máy)</label>
                         <div className="image-inputs-container">

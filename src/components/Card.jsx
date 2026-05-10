@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Card.css";
+import OptimizedImage from "./OptimizedImage";
 
 function Card(props) {
     const images = Array.isArray(props.linkAnh) ? props.linkAnh : [props.linkAnh];
@@ -50,7 +51,12 @@ function Card(props) {
                             <button className="btn-arrow btn-next" onClick={nextSlide}>❯</button>
                         </>
                     )}
-                    <img src={images[currentIndex] || 'https://via.placeholder.com/300'} alt={props.nameProduct} className="card-img" />
+                    <OptimizedImage
+                        src={images[currentIndex] || 'https://via.placeholder.com/300'}
+                        alt={props.nameProduct}
+                        size="PRODUCT_LIST"
+                        lazy={true}
+                    />
                     {images.length > 1 && (
                         <span className="slider-counter">
                             {currentIndex + 1}/{images.length}
@@ -71,7 +77,7 @@ function Card(props) {
                 </div>
             </div>
 
-            {/* --- 🌟 GIAO DIỆN POPUP MUA NHANH --- */}
+            {/* --- GIAO DIỆN POPUP MUA NHANH --- */}
             {showQuickBuy && (
                 <div className="quick-buy-overlay" onClick={() => setShowQuickBuy(false)}>
                     {/* Ngăn không cho sự kiện click lan ra ngoài làm tắt popup */}
@@ -81,7 +87,12 @@ function Card(props) {
                         <h3>Tùy chỉnh đơn hàng</h3>
 
                         <div className="quick-buy-product">
-                            <img src={images[0] || 'https://placehold.co/80'} alt={props.nameProduct} />
+                            <OptimizedImage
+                                src={images[0] || 'https://placehold.co/80'}
+                                alt={props.nameProduct}
+                                size="THUMBNAIL"
+                                lazy={false}
+                            />
                             <div className="quick-buy-details">
                                 <h4>{props.nameProduct}</h4>
                                 <p className="quick-buy-price">{Number(props.price).toLocaleString('vi-VN')} đ</p>

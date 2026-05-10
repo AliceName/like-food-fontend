@@ -4,6 +4,7 @@ import { supabase } from "../../supabaseClient";
 import { useParams, useOutletContext, useNavigate, Link } from "react-router-dom";
 import './ProductDetail.css'
 import Card from "../../components/Card";
+import OptimizedImage from "../../components/OptimizedImage";
 import Loading from '../../components/Loading';
 
 const ProductDetail = () => {
@@ -95,17 +96,29 @@ const ProductDetail = () => {
 
                 {/* CỘT TRÁI: HÌNH ẢNH */}
                 <div className="product-image-section">
-                    <img src={mainImage} alt={product.ten} className="main-image" />
+                    <OptimizedImage
+                        src={mainImage}
+                        alt={product.ten}
+                        size="DETAIL"
+                        lazy={false}
+                    />
 
                     <div className="thumbnail-list">
                         {product.anh && product.anh.map((imgUrl, index) => (
-                            <img
+                            <div
                                 key={index}
-                                src={imgUrl}
-                                alt={`Thumbnail ${index}`}
                                 onClick={() => setMainImage(imgUrl)}
                                 className={`thumbnail ${mainImage === imgUrl ? 'active' : ''}`}
-                            />
+                            >
+                                <OptimizedImage
+                                    src={imgUrl}
+                                    alt={`Thumbnail ${index}`}
+                                    size="THUMBNAIL"
+                                    width={80}
+                                    height={80}
+                                    lazy={true}
+                                />
+                            </div>
                         ))}
                     </div>
                 </div>
@@ -146,7 +159,13 @@ const ProductDetail = () => {
                             <button className="btn-close-quick-buy" onClick={() => setShowQuickBuy(false)}>✕</button>
 
                             {/* Ảnh lấy từ product.anh */}
-                            <img className="quick-buy-cover" src={product.anh?.[0] || 'https://placehold.co/400x200'} alt={product.ten} />
+                            <OptimizedImage
+                                src={product.anh?.[0] || 'https://placehold.co/400x200'}
+                                alt={product.ten}
+                                size="CARD"
+                                lazy={false}
+                                className="quick-buy-cover"
+                            />
 
                             <div className="quick-buy-content">
                                 <h3 className="quick-buy-title">{product.ten}</h3>

@@ -13,11 +13,11 @@ const AdminAddProduct = () => {
     const [images, setImages] = useState(['']); // Khởi tạo mảng chứa 1 ô nhập link ảnh trống
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    // 🌟 2. STATE DÀNH RIÊNG CHO CATEGORIES
+    // 2. STATE DÀNH RIÊNG CHO CATEGORIES
     const [categories, setCategories] = useState([]); // Mảng chứa danh sách DB tải về
     const [selectedCategoryId, setSelectedCategoryId] = useState(''); // Lưu ID danh mục được chọn
 
-    // 🌟 3. TỰ ĐỘNG LẤY DATA TỪ DB KHI VỪA MỞ TRANG
+    // 3. TỰ ĐỘNG LẤY DATA TỪ DB KHI VỪA MỞ TRANG
     useEffect(() => {
         const fetchCategories = async () => {
             try {
@@ -39,7 +39,6 @@ const AdminAddProduct = () => {
         fetchCategories();
     }, []);
 
-    // --- LOGIC XỬ LÝ NHIỀU ẢNH ---
     // --- LOGIC XỬ LÝ ẢNH TỪ MÁY TÍNH ---
     const handleFileChange = async (index, event) => {
         const file = event.target.files[0];
@@ -95,7 +94,7 @@ const AdminAddProduct = () => {
     // --- LOGIC LƯU SẢN PHẨM LÊN SUPABASE ---
     const handleSubmit = async (e) => {
         e.preventDefault(); // Chặn hành vi load lại trang của Form
-
+        const rawPrice = Number(gia.replace(/\./g, ''));
         // Đã chuyển sang Swal báo lỗi thiếu thông tin (Warning)
         if (!ten || !gia || images[0].trim() === '' || !selectedCategoryId) {
             Swal.fire({
@@ -118,6 +117,17 @@ const AdminAddProduct = () => {
             return;
         }
 
+        // Validate for negative price
+        if (rawPrice < 0) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Giá không hợp lệ!',
+                text: 'Giá bán không được là số âm. Vui lòng nhập lại!',
+                confirmButtonColor: '#f39c12'
+            });
+            return;
+        }
+
         setIsSubmitting(true);
 
         try {
@@ -127,7 +137,7 @@ const AdminAddProduct = () => {
             const newProduct = {
                 ten: ten,
                 category_id: Number(selectedCategoryId),
-                gia: Number(gia), // Đảm bảo lưu vào DB dưới dạng số
+                gia: rawPrice, // Đảm bảo lưu vào DB dưới dạng số
                 description: description,
                 anh: validImages // Lưu nguyên mảng ảnh vào cột 'anh'
             };
@@ -160,6 +170,20 @@ const AdminAddProduct = () => {
         } finally {
             setIsSubmitting(false);
         }
+    };
+
+    // HÀM TỰ ĐỘNG FORMAT GIÁ TIỀN (THÊM DẤU CHẤM)
+    const handlePriceChange = (e) => {
+        // 1. Lấy giá trị người dùng nhập, xóa bỏ mọi ký tự KHÔNG phải là số
+        let rawValue = e.target.value.replace(/\D/g, '');
+
+        // 2. Nếu có số, thì định dạng lại với dấu chấm chuẩn Việt Nam
+        if (rawValue !== '') {
+            rawValue = Number(rawValue).toLocaleString('vi-VN');
+        }
+
+        // 3. Lưu vào state
+        setGia(rawValue);
     };
 
     return (
@@ -196,10 +220,10 @@ const AdminAddProduct = () => {
                         <div className="form-group">
                             <label>Giá bán (VNĐ) <span className="required">*</span></label>
                             <input
-                                type="number"
-                                placeholder="VD: 55000"
+                                type="text"
+                                placeholder="VD: 55.000"
                                 value={gia}
-                                onChange={(e) => setGia(e.target.value)}
+                                onChange={handlePriceChange}
                             />
                         </div>
                     </div>
